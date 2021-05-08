@@ -20,4 +20,7 @@
   };
 
   networking.networkmanager.enable = true;
+
+  home-manager.useGlobalPkgs = true;
+  home-manager.useUserPackages = true;
 }

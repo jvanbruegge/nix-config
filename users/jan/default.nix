@@ -14,7 +14,7 @@ in
 
   nix.trustedUsers = [ login ];
 
-  #home-manager.users."${login}" = import ./home.nix;
+  home-manager.users."${login}" = import ./home.nix;
 
   time.timeZone = "Europe/Berlin";
 
