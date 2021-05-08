@@ -1,11 +1,11 @@
 { config, pkgs, ... }:
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [
       ./hardware-configuration.nix
       ../../common.nix
       ../../roles/sway.nix
-      ../../temp.nix # TODO: remove
+      ../../temp.nix #TODO: remove
     ];
 
   networking.hostName = "Jan-work";

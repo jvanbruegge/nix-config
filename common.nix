@@ -20,13 +20,4 @@
   };
 
   networking.networkmanager.enable = true;
-
-  time.timeZone = "Europe/Berlin";
-
-  i18n.defaultLocale = "en_US.UTF-8";
-
-  users.users.jan = {
-    isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" ];
-  };
 }
