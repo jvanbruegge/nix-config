@@ -1,5 +1,9 @@
 { config, pkgs, ... }:
 {
+  imports = [
+    ./pipewire.nix
+  ];
+
   nix = {
     package = pkgs.nixUnstable;
     extraOptions = ''
