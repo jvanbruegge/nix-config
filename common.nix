@@ -23,4 +23,10 @@
 
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
+
+  environment.pathsToLink = [ "/share/zsh" ];
+
+  fonts.fonts = with pkgs; [
+    nerdfonts
+  ];
 }

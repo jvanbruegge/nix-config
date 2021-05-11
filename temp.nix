@@ -4,5 +4,7 @@
     neovim
     wget
     firefox-wayland
+    fzf
+    ripgrep
   ];
 }
