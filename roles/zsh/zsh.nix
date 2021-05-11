@@ -15,7 +15,7 @@
       }
       {
         name = "powerlevel10k-config";
-        src = lib.cleanSource ../zsh;
+        src = lib.cleanSource ./.;
         file = "p10k-config.zsh";
       }
     ];

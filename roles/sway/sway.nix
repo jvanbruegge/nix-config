@@ -1,6 +1,7 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 let
-  modifier = config.wayland.windowManager.sway.config.modifier;
+  cfg = config.wayland.windowManager.sway.config;
+  modifier = cfg.modifier;
   mkNumKeybinding = names: f: builtins.map (
     n: { name = "${modifier}+${names}${toString n}"; value = f (toString n); }
   ) [1 2 3 4 5 6 7 8 9];
@@ -20,7 +21,13 @@ in
     slurp
     wl-clipboard
     wofi
+    pamixer
   ];
+
+  home.file.wallpaper = {
+    source = ./wallpaper.png;
+    target = ".config/sway/wallpaper.png";
+  };
 
   wayland.windowManager.sway = {
     enable = true;
@@ -30,20 +37,29 @@ in
       bars = [];
       modifier = "Mod4";
 
+      window.border = 0;
+      floating.border = 0;
+
+      terminal = "${config.programs.alacritty.package}/bin/alacritty";
+      menu = "${pkgs.wofi}/bin/wofi --show drun | ${pkgs.findutils}/bin/xargs swaymsg exec --";
+
       input = {
         "*".xkb_options = "caps:escape";
       };
+
+      output."*".bg = "$HOME/.config/sway/wallpaper.png fill";
 
       keybindings = builtins.listToAttrs (
         mkNumKeybinding "" (n: "workspace number ${n}")
         ++ mkNumKeybinding "Shift+" (n: "move container to workspace number ${n}")
       ) // {
-        "${modifier}+t" = "exec ${config.programs.alacritty.package}/bin/alacritty";
-        "${modifier}+d" = "wofi --show drun | xargs swaymsg exec --";
+        "${modifier}+t" = "exec ${cfg.terminal}";
+        "${modifier}+d" = "exec ${cfg.menu}";
         "${modifier}+Shift+space" = "floating toggle";
         "${modifier}+Shift+q" = "kill";
         "${modifier}+Shift+c" = "reload";
         "${modifier}+f" = "fullscreen";
+        "${modifier}+r" = "mode resize";
 
         # Move focus
         "${modifier}+${left}" = "focus left";
@@ -65,7 +81,11 @@ in
         "Print" = "exec grim -g \"$(slurp)\" - | wl-copy";
         "${modifier}+Print" = "exec mkdir -p ~/Screenshots && grim -g \"$(slurp)\" - >~/Screenshots/$(date -Iseconds).png";
 
-        "${modifier}+r" = "mode resize";
+        # Volume control
+        "XF86AudioRaiseVolume" = "exec ${pkgs.pamixer}/bin/pamixer --increase 5";
+        "XF86AudioLowerVolume" = "exec ${pkgs.pamixer}/bin/pamixer --decrease 5";
+        "XF86AudioMute" = "exec ${pkgs.pamixer}/bin/pamixer --toggle-mute";
+        "XF86AudioMicMute" = "exec ${pkgs.pamixer}/bin/pamixer --toggle-mute --default-source";
       };
     };
   };
