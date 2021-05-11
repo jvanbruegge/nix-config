@@ -4,7 +4,7 @@
     [
       ./hardware-configuration.nix
       ../../common.nix
-      ../../roles/sway.nix
+      ../../roles/greeter.nix
       ../../temp.nix #TODO: remove
     ];
 

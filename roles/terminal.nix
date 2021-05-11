@@ -9,7 +9,7 @@
           family = "BitstreamVeraSansMono Nerd Font";
           style = "Regular";
         };
-        size = 12;
+        size = 11;
       };
 
       # Solarized Dark (https://github.com/eendroroy/alacritty-theme/blob/master/themes/solarized_dark.yaml)

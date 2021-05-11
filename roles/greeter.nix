@@ -13,14 +13,6 @@
   programs.sway = {
     enable = true;
     wrapperFeatures.gtk = true;
-    extraPackages = with pkgs; [
-      swaylock
-      wl-clipboard
-      mako
-      foot
-      wofi
-      xdg-desktop-portal-wlr
-    ];
   };
 
   services.greetd = {
