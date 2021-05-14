@@ -75,7 +75,7 @@ in
 
         # Move workspaces to other monitors
         "${modifier}+Shift+Alt+${left}" = "move workspace to output left";
-        "${modifier}+Shift+Alt+${right}" = "move workspace to output righ";
+        "${modifier}+Shift+Alt+${right}" = "move workspace to output right";
 
         # Screenshots
         "Print" = "exec grim -g \"$(slurp)\" - | wl-copy";
