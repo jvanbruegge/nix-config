@@ -23,7 +23,12 @@
     enable = true;
   };
 
-  networking.networkmanager.enable = true;
+  networking.networkmanager = {
+    enable = true;
+    packages = with pkgs; [
+      networkmanager-openvpn
+    ];
+  };
 
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
