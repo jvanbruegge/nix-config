@@ -47,7 +47,7 @@ in
         "*".xkb_options = "caps:escape";
       };
 
-      output."*".bg = "$HOME/.config/sway/wallpaper.png fill";
+      output."*".bg = "$HOME/.config/sway/wallpaper.png fit";
 
       keybindings = builtins.listToAttrs (
         mkNumKeybinding "" (n: "workspace number ${n}")
