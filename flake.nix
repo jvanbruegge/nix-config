@@ -2,7 +2,7 @@
   description = "My personal laptop configuration with Nix";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-21.05";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -10,6 +10,7 @@
   };
 
   outputs = inputs@{ self, nixpkgs, home-manager, ... }: {
+    nix.registry.nixpkgs.flake = nixpkgs;
     nixosConfigurations."Jan-work" = nixpkgs.lib.nixosSystem {
       specialArgs = { inherit inputs; };
       system = "x86_64-linux";

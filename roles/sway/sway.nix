@@ -23,16 +23,53 @@ in
     wl-clipboard
     wofi
     pamixer
+    swaylock-effects
   ];
 
-  home.file.wallpaper = {
-    source = ./wallpaper.png;
-    target = ".config/sway/wallpaper.png";
+  home.file = {
+    wallpaper = {
+      source = ./wallpaper.png;
+      target = ".config/sway/wallpaper.png";
+    };
+
+    lockWallpapers = {
+      source = ./wallpapers;
+      target = ".config/sway/wallpapers";
+      recursive = true;
+    };
+
+    lockScript = {
+      target = ".config/sway/lock.sh";
+      executable = true;
+      text = ''
+        #!${pkgs.bash}/bin/bash
+        set -e
+        cache="${config.xdg.cacheHome}/sway"
+        list="$cache/lockscreen-wallpapers.txt"
+        wallpapers="${config.xdg.configHome}/sway/wallpapers"
+
+        mkdir -p "$cache"
+
+        if [ ! -e "$list" ]; then
+          ls "$wallpapers" | shuf > "$list"
+        fi
+
+        file=$(head -n1 "$list")
+        sed '1d' -i "$list"
+
+        if [[ -z $(grep '[^[:space:]]' "$list") ]]; then
+          rm "$list"
+        fi
+
+        ${pkgs.swaylock-effects}/bin/swaylock --clock --datestr '%d.%m.%Y' --indicator -ef -i "$wallpapers/$file"
+      '';
+    };
   };
 
   wayland.windowManager.sway = {
     enable = true;
     package = null;
+    wrapperFeatures.gtk = true;
 
     config = {
       bars = [];
@@ -61,6 +98,9 @@ in
         "${modifier}+Shift+c" = "reload";
         "${modifier}+f" = "fullscreen";
         "${modifier}+r" = "mode resize";
+
+	# Lock screen
+        "${modifier}+Shift+Return" = "exec ${config.xdg.configHome}/sway/lock.sh";
 
         # Move focus
         "${modifier}+${left}" = "focus left";
