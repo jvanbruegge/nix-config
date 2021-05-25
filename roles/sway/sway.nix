@@ -14,6 +14,7 @@ in
   imports = [
     ./kanshi.nix
     ./waybar.nix
+    ./mako.nix
   ];
 
   home.packages = with pkgs; [
