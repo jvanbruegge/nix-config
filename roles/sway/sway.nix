@@ -87,6 +87,10 @@ in
 
       output."*".bg = "$HOME/.config/sway/wallpaper.png fit";
 
+      startup = [
+        { command = "systemctl --user restart kanshi"; always = true; }
+      ];
+
       keybindings = builtins.listToAttrs (
         mkNumKeybinding "" (n: "workspace number ${n}")
         ++ mkNumKeybinding "Shift+" (n: "move container to workspace number ${n}")
