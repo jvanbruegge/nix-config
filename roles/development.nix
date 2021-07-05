@@ -11,5 +11,6 @@
 
   home.packages = with pkgs; [
     stack
+    nodePackages.pnpm
   ];
 }

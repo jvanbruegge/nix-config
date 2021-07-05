@@ -4,6 +4,5 @@
     wget
     firefox-wayland
     fzf
-    ripgrep
   ];
 }
