@@ -6,6 +6,7 @@
 
   nix = {
     package = pkgs.nixUnstable;
+    sandboxPaths = [ "/bin/sh=${pkgs.bash}/bin/sh" ];
     extraOptions = ''
       experimental-features = nix-command flakes
     '';
