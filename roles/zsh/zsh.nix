@@ -30,6 +30,9 @@
         disown
         set -m
       }
+
+      setopt nobeep
+      setopt hist_find_no_dups
       '';
 
     sessionVariables = {
@@ -39,6 +42,13 @@
 
     "oh-my-zsh" = {
       enable = true;
+      plugins = [
+	"systemd"
+	"colored-man-pages"
+	"history-substring-search"
+	"kubectl"
+	"z"
+      ];
     };
 
     shellAliases = {
