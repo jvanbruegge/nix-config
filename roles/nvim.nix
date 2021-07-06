@@ -39,6 +39,12 @@
       "Enable the column for gitgutter and diagnostics by default
       set signcolumn=yes
 
+      "Spaces instead of tabs
+      set expandtab
+      set smarttab
+      set shiftwidth=2
+      set softtabstop=2
+      set tabstop=2
       
       "Navigate tabs with J and K
       nnoremap J :tabp<CR>
