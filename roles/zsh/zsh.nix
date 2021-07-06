@@ -74,8 +74,8 @@
       EDITOR = "nvim";
       FZF_DEFAULT_COMMAND = "rg --files --follow --hidden --glob '!.git/'";
       _Z_DATA = "${config.xdg.dataHome}/zsh/z";
-      VI_MODE_RESET_PROMPT_ON_MODE_CHANGE = "true";
       VI_MODE_SET_CURSOR = "true";
+      KEYTIMEOUT = "1";
     };
 
     "oh-my-zsh" = {
