@@ -9,4 +9,12 @@
     alsa.support32Bit = true;
     pulse.enable = true;
   };
+
+  xdg.portal = {
+    enable = true;
+    extraPortals = with pkgs; [
+      xdg-desktop-portal-wlr
+    ];
+    gtkUsePortal = true;
+  };
 }

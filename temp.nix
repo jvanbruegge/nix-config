@@ -2,7 +2,5 @@
 {
   environment.systemPackages = with pkgs; [
     wget
-    firefox-wayland
-    fzf
   ];
 }

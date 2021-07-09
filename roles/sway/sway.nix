@@ -26,6 +26,11 @@ in
     swaylock-effects
   ];
 
+  home.sessionVariables = {
+    MOZ_ENABLE_WAYLAND = 1;
+    XDG_CURRENT_DESKTOP = "sway";
+  };
+
   home.file = {
     wallpaper = {
       source = ./wallpaper.png;

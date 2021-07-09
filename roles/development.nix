@@ -7,6 +7,7 @@
     ./nvim.nix
     ./zsh/zsh.nix
     ./sway/sway.nix
+    ./firefox.nix
   ];
 
   home.packages = with pkgs; [
