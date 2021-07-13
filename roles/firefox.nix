@@ -1,9 +1,24 @@
 { config, pkgs, ... }:
 
 {
+  home.file.tridactylrc = {
+    target = ".config/tridactyl/tridactylrc";
+    text =
+      ''
+      bind qq tabclose
+      set modeindicator false
+      set searchurls.hoogle https://hoogle.haskell.org/?hoogle=
+      '';
+  };
+
   programs.firefox = {
     enable = true;
-    package = pkgs.firefox-wayland;
+    package = pkgs.firefox.override {
+      forceWayland = true;
+      cfg = {
+        enableTridactylNative = true;
+      };
+    };
     profiles.jan = {
       settings = {
         "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
