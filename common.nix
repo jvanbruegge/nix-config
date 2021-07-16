@@ -39,4 +39,18 @@
   fonts.fonts = with pkgs; [
     nerdfonts
   ];
+
+  services.xserver.extraLayouts = {
+    us_de = {
+      description = "US layout with alt-gr umlauts";
+      languages = [ "eng" ];
+      symbolsFile = ./symbols/us_de;
+    };
+
+    us_de_diff = {
+      description = "Helper for us_de";
+      languages = [ "eng" ];
+      symbolsFile = ./symbols/us_de_diff;
+    };
+  };
 }

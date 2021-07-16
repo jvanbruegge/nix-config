@@ -1,0 +1,9 @@
+partial default alphanumeric_keys
+xkb_symbols "us_de" {
+    include "us"
+    include "us_de_diff"
+    name[Group1]="en_US";
+    key <RALT>  { type[Group1]="TWO_LEVEL",
+                  [ ISO_Level3_Shift, Multi_key ]   };
+    modifier_map Mod5   { <RALT> };
+};

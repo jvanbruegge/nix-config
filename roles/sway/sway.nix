@@ -82,6 +82,8 @@ in
     };
   };
 
+  fonts.fontconfig.enable = true;
+
   wayland.windowManager.sway = {
     enable = true;
     package = null;
@@ -98,7 +100,10 @@ in
       menu = "${pkgs.wofi}/bin/wofi --show drun | ${pkgs.findutils}/bin/xargs swaymsg exec --";
 
       input = {
-        "*".xkb_options = "caps:escape";
+        "*" = {
+          xkb_options = "caps:escape";
+          xkb_layout = "us_de";
+        };
       };
 
       output."*".bg = "$HOME/.config/sway/wallpaper.png fit";

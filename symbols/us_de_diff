@@ -1,0 +1,18 @@
+default partial
+xkb_symbols "us_de_diff" {
+    key <AE01> {  [  1,   exclam      , dead_grave             ] };
+    key <AE02> {  [  2,   at          , dead_circumflex        ] };
+    key <AE03> {  [  3,   numbersign  , dead_acute             ] };
+    key <AE04> {  [  4,   dollar      , dead_diaeresis         ] };
+    key <AE05> {  [  5,   percent     , dead_cedilla           ] };
+    key <AE06> {  [  6,   asciicircum , dead_caron             ] };
+    key <AE07> {  [  7,   ampersand   , section                ] };
+    key <AD03> {  [  e,   E           , EuroSign               ] };
+    key <AD07> {  [  u,   U           , udiaeresis, Udiaeresis ] };
+    key <AD09> {  [  o,   O           , odiaeresis, Odiaeresis ] };
+    key <AC01> {  [  a,   A           , adiaeresis, Adiaeresis ] };
+    key <AC02> {  [  s,   S           , ssharp                 ] };
+    key <AB03> {  [  c,   C           , ccedilla               ] };
+    key <AB01> {  [  z,   Z           , guillemotleft          ] };
+    key <AB02> {  [  x,   X           , guillemotright         ] };
+};
