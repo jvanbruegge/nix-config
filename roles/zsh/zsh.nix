@@ -6,6 +6,10 @@
     text = "";
   };
 
+  home.packages = with pkgs; [
+    xdg-utils
+  ];
+
   programs.zsh = {
     enable = true;
     dotDir = ".config/zsh";
