@@ -69,6 +69,17 @@ in
         ${pkgs.swaylock-effects}/bin/swaylock --clock --datestr '%d.%m.%Y' --indicator -ef -i "$wallpapers/$file"
       '';
     };
+
+    xdgPortal = {
+      target = ".config/xdg-desktop-portal-wlr/config";
+      text =
+        ''
+        [screencast]
+        max_fps=30
+        chooser_type=simple
+        chooser_cmd=slurp -f %o -or
+        '';
+    };
   };
 
   wayland.windowManager.sway = {
