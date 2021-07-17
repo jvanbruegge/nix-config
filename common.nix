@@ -40,6 +40,15 @@
     nerdfonts
   ];
 
+  environment.systemPackages = with pkgs; [
+    yubikey-personalization
+  ];
+
+  services.udev.packages = with pkgs; [
+    yubikey-personalization
+  ];
+  services.pcscd.enable = true;
+
   services.xserver.extraLayouts = {
     us_de = {
       description = "US layout with alt-gr umlauts";

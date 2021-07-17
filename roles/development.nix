@@ -8,6 +8,7 @@
     ./zsh/zsh.nix
     ./sway/sway.nix
     ./firefox.nix
+    ./gpg.nix
   ];
 
   home.packages = with pkgs; [

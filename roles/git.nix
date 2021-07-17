@@ -45,6 +45,8 @@
       merge.ff = false;
       pull.ff = "only";
       core.pager = "less -F -X";
+      commit.gpgSign = true;
+      tag.gpgSign = true;
     };
   };
 }
