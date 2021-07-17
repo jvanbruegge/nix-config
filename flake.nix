@@ -9,17 +9,14 @@
     };
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, ... }: {
+  outputs = inputs@{ self, nixpkgs, home-manager, ... }:
+  let mkConfig = (import ./mkConfig.nix) inputs;
+  in
+  {
     nix.registry.nixpkgs.flake = nixpkgs;
-    nixosConfigurations."Jan-work" = nixpkgs.lib.nixosSystem {
-      specialArgs = { inherit inputs; };
-      system = "x86_64-linux";
-      modules = [
-        ./machines/work/configuration.nix
-        ./users/jan
-        home-manager.nixosModules.home-manager
-        { home-manager.extraSpecialArgs = { host = "work"; }; }
-      ];
+    nixosConfigurations = {
+      "Jan-Laptop" = mkConfig { host = "laptop"; configuration = ./machines/laptop/configuration.nix; };
+      "Jan-work" = mkConfig { host = "work"; configuration = ./machines/work/configuration.nix; };
     };
   };
 }
