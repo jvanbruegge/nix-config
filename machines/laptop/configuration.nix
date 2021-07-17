@@ -5,7 +5,6 @@
       ./hardware-configuration.nix
       ../../common.nix
       ../../roles/greeter.nix
-      ../../temp.nix #TODO: remove
     ];
 
   networking.hostName = "Jan-Laptop";
