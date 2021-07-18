@@ -36,7 +36,7 @@
       pso = "push --set-upstream origin HEAD";
       pu = "pull";
 
-      uu = "!get fetch upstream && git rebase upstream/$(git branch --quiet | grep '*' | cut -c 3-)";
+      uu = "!git fetch upstream && git rebase upstream/$(git branch --quiet | grep '*' | cut -c 3-)";
 
       l = "log --pretty=oneline --abbrev-commit --graph";
     };
