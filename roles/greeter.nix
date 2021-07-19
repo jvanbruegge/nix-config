@@ -10,11 +10,6 @@
     ];
   };
 
-  programs.sway = {
-    enable = true;
-    wrapperFeatures.gtk = true;
-  };
-
   services.greetd = {
     enable = true;
     settings = {
