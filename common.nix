@@ -37,7 +37,8 @@
   environment.pathsToLink = [ "/share/zsh" ];
 
   fonts.fonts = with pkgs; [
-    nerdfonts
+    dejavu_fonts
+    (nerdfonts.override { fonts = [ "BitstreamVeraSansMono" ]; })
   ];
 
   environment.systemPackages = with pkgs; [

@@ -78,8 +78,6 @@ in
     };
   };
 
-  fonts.fontconfig.enable = true;
-  
   wayland.windowManager.sway = {
     enable = true;
     wrapperFeatures.gtk = true;
@@ -128,7 +126,7 @@ in
         "${modifier}+f" = "fullscreen";
         "${modifier}+r" = "mode resize";
 
-	# Lock screen
+        # Lock screen
         "${modifier}+Shift+Return" = "exec ${config.xdg.configHome}/sway/lock.sh";
 
         # Move focus
