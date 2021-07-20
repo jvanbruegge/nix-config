@@ -24,6 +24,7 @@ in
     wofi
     pamixer
     swaylock-effects
+    brightnessctl
   ];
 
   home.sessionVariables = {
@@ -153,6 +154,10 @@ in
         "XF86AudioLowerVolume" = "exec ${pkgs.pamixer}/bin/pamixer --decrease 5";
         "XF86AudioMute" = "exec ${pkgs.pamixer}/bin/pamixer --toggle-mute";
         "XF86AudioMicMute" = "exec ${pkgs.pamixer}/bin/pamixer --toggle-mute --default-source";
+
+        # Laptop brightness
+        "XF86MonBrightnessUp" = "exec ${pkgs.brightnessctl}/bin/brightnessctl set '+5%'";
+        "XF86MonBrightnessDown" = "exec ${pkgs.brightnessctl}/bin/brightnessctl set '5%-'";
       };
     };
   };
