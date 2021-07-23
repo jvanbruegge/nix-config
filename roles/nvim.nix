@@ -7,6 +7,7 @@
     haskell-language-server
     nodePackages.typescript
     nodePackages.typescript-language-server
+    ormolu
   ];
 
   programs.neovim = {
@@ -196,6 +197,9 @@
           nnoremap <space>o <cmd>Telescope find_files<cr>
           nnoremap <space>t <cmd>tabnew<cr><cmd>Telescope find_files<cr>
           '';
+      }
+      { plugin = vim-ormolu;
+        config = "let g:ormolu_options=[\"-o -XTypeApplications\"]";
       }
     ];
   };
