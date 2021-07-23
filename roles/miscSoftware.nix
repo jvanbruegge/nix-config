@@ -7,6 +7,7 @@
     gnome.nautilus
     gnome.evince
     signal-desktop
+    isabelle
   ];
 
   xdg.mimeApps = {
