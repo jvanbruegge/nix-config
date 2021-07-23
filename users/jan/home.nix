@@ -3,6 +3,7 @@
 {
   imports = [
     ../../roles/development.nix
+    ../../roles/neomutt/neomutt.nix
     ../../roles/miscSoftware.nix
   ];
 
