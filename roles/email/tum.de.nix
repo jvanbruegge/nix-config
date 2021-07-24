@@ -22,6 +22,8 @@
       msmtp.enable = true;
       neomutt = {
         enable = true;
+        mailboxName = "===== tum.de =====";
+        extraMailboxes = [ "Sent" "Drafts" "Junk Email" ];
       };
       passwordCommand = "gpg --decrypt ~/.config/neomutt/tum-de-password.gpg";
       realName = "Jan van Brügge";

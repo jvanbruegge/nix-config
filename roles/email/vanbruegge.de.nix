@@ -19,6 +19,8 @@
       msmtp.enable = true;
       neomutt = {
         enable = true;
+        mailboxName = "===== vanbruegge.de =====";
+        extraMailboxes = [ "Sent" "Drafts" "Spam" ];
       };
       passwordCommand = "gpg --decrypt ~/.config/neomutt/vanbruegge-de-password.gpg";
       primary = true;

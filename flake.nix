@@ -4,7 +4,7 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager = {
-      url = "github:nix-community/home-manager";
+      url = "github:jvanbruegge/home-manager/named-mailboxes";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };

@@ -7,15 +7,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1626841047,
-        "narHash": "sha256-DSS2Wuu9P0oUzVRTwkd9J/AALhS9kA2ZwSlX0u8gGsM=",
-        "owner": "nix-community",
+        "lastModified": 1627158465,
+        "narHash": "sha256-/rWZ81uL+qZXnNEjt676ym/Qk6FdeG89L0tS6J4BKMY=",
+        "owner": "jvanbruegge",
         "repo": "home-manager",
-        "rev": "41101d0e62fe3cdb76e8e64349a2650da1433dd4",
+        "rev": "ee464508ba5198e10de6faf76c53781a0239c8f6",
         "type": "github"
       },
       "original": {
-        "owner": "nix-community",
+        "owner": "jvanbruegge",
+        "ref": "named-mailboxes",
         "repo": "home-manager",
         "type": "github"
       }

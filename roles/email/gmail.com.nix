@@ -24,6 +24,18 @@
       msmtp.enable = true;
       neomutt = {
         enable = true;
+        mailboxName = "===== gmail.com =====";
+        extraMailboxes = [
+          { mailbox = "[Gmail]/Gesendet";
+            name = "Sent";
+          }
+          { mailbox = "[Gmail]/Entw&APw-rfe";
+            name = "Drafts";
+          }
+          { mailbox = "[Gmail]/Spam";
+            name = "Spam";
+          }
+        ];
       };
       passwordCommand = "gpg --decrypt ~/.config/neomutt/gmail-password.gpg";
       realName = "Jan van Brügge";
