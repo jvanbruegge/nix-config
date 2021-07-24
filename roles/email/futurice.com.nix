@@ -12,6 +12,11 @@
     futurice = {
       address = "jan.van.brugge@futurice.com";
       flavor = "gmail.com";
+      folders = {
+        drafts = "[Gmail]/Drafts";
+        trash = "[Gmail]/Trash";
+        sent = "[Gmail]/Sent";
+      };
       mbsync = {
         enable = true;
         create = "maildir";

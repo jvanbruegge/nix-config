@@ -12,6 +12,11 @@
     gmail = {
       address = "supermanitu@gmail.com";
       flavor = "gmail.com";
+      folders = {
+        drafts = "[Gmail]/Entw&APw-rfe";
+        trash = "[Gmail]/Papierkorb";
+        sent = "[Gmail]/Gesendet";
+      };
       mbsync = {
         enable = true;
         create = "maildir";
