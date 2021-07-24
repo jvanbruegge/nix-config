@@ -9,6 +9,9 @@
   programs.neomutt = {
     enable = true;
     vimKeys = true;
+    sidebar = {
+      enable = true;
+    };
   };
 
   services.mbsync.enable = true;
