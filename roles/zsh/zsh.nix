@@ -100,6 +100,7 @@
       p = "pnpm";
       px = "pnpx";
       k = "kubectl";
+      n = "neomutt";
     };
   };
 }
