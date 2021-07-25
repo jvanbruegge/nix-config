@@ -24,6 +24,12 @@
     settings = {
       mailcap_path = "~/.config/neomutt/mailcap";
     };
+    binds = [
+      { action = "view-attach";
+        key = "<space>";
+        map = [ "attach" ];
+      }
+    ];
     macros = [
       {
         action = "<sidebar-prev><sidebar-open>";
