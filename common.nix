@@ -39,6 +39,7 @@
   fonts.fonts = with pkgs; [
     dejavu_fonts
     (nerdfonts.override { fonts = [ "BitstreamVeraSansMono" ]; })
+    ipafont
   ];
 
   environment.systemPackages = with pkgs; [
