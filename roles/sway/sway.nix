@@ -17,6 +17,13 @@ in
     ./mako.nix
   ];
 
+  home.activation = {
+    cloneWallpapers = lib.hm.dag.entryAfter ["writeBoundary"]
+      ''
+      $DRY_RUN_CMD [ ! -e ${config.xdg.configHome}/sway/wallpapers ] && git clone git@github.com:jvanbruegge/wallpapers.git ${config.xdg.configHome}/sway/wallpapers || true
+      '';
+  };
+
   home.packages = with pkgs; [
     grim
     slurp
@@ -31,12 +38,6 @@ in
     wallpaper = {
       source = ./wallpaper.png;
       target = ".config/sway/wallpaper.png";
-    };
-
-    lockWallpapers = {
-      source = ./wallpapers;
-      target = ".config/sway/wallpapers";
-      recursive = true;
     };
 
     lockScript = {
@@ -62,7 +63,7 @@ in
           rm "$list"
         fi
 
-        ${pkgs.swaylock-effects}/bin/swaylock --clock --datestr '%d.%m.%Y' --indicator -ef -i "$wallpapers/$file"
+        systemd-cat --identifier swaylock ${pkgs.swaylock-effects}/bin/swaylock -d --clock --datestr '%d.%m.%Y' --indicator -ef -i "$wallpapers/$file"
       '';
     };
 

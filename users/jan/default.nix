@@ -12,6 +12,8 @@ in
     shell = pkgs.zsh;
   };
 
+  programs.sway.enable = true;
+
   nix.trustedUsers = [ login ];
 
   home-manager.users."${login}" = import ./home.nix;
