@@ -8,6 +8,7 @@
     gnome.evince
     signal-desktop
     isabelle
+    pdftk
   ];
 
   xdg.mimeApps = {
