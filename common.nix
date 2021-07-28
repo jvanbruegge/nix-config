@@ -44,6 +44,7 @@
 
   environment.systemPackages = with pkgs; [
     yubikey-personalization
+    docker-compose
   ];
 
   services.udev.packages = with pkgs; [
@@ -64,4 +65,7 @@
       symbolsFile = ./symbols/us_de_diff;
     };
   };
+
+  virtualisation.docker.enable = true;
+  users.users.jan.extraGroups = [ "docker" ];
 }
