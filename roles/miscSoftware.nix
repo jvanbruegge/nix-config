@@ -9,6 +9,7 @@
     signal-desktop
     isabelle
     pdftk
+    discord
   ];
 
   xdg.mimeApps = {

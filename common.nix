@@ -16,6 +16,7 @@
     packageOverrides = pkgs: {
       vaapiIntel = pkgs.vaapiIntel.override { enableHybridCodec = true; };
     };
+    allowUnfree = true;
   };
 
   boot.loader.systemd-boot.enable = true;
