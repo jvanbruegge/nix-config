@@ -34,6 +34,17 @@
       nnoremap <SPACE> <Nop>
       let mapleader = " "
 
+      "Enable copy+paste from the clipboard
+      vnoremap <leader>y "+y
+      nnoremap <leader>Y "+yg_
+      nnoremap <leader>y "+y
+      nnoremap <leader>yy "+yy
+
+      nnoremap <leader>p "+p
+      nnoremap <leader>P "+P
+      vnoremap <leader>p "+p
+      vnoremap <leader>P "+P
+
       "Allow to incrment letters with Ctrl+A
       set nrformats=alpha
 
