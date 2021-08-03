@@ -1,4 +1,6 @@
-{ pkgs, ... }:
+{ pkgs, host, lib, ... }:
+
+with pkgs;
 
 {
   home.packages = with pkgs; [
@@ -9,6 +11,12 @@
     signal-desktop
     isabelle
     pdftk
+    kubectl
+    qrencode
+  ] ++ lib.optionals (host == "work") [
+    awscli2
+    envsubst
+  ] ++ lib.optionals (host == "laptop") [
     discord
   ];
 
