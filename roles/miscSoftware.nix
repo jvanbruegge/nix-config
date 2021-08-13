@@ -13,6 +13,8 @@ with pkgs;
     pdftk
     kubectl
     qrencode
+    libreoffice
+    hunspellDicts.de_DE
   ] ++ lib.optionals (host == "work") [
     awscli2
     envsubst
