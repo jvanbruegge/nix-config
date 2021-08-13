@@ -69,4 +69,6 @@
 
   virtualisation.docker.enable = true;
   users.users.jan.extraGroups = [ "docker" ];
+
+  services.printing.enable = true;
 }
