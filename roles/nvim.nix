@@ -84,6 +84,7 @@
           '';
       }
       vim-nix
+      dhall-vim
       vim-airline
       { plugin = vim-airline-themes;
         config =
@@ -96,7 +97,7 @@
         config =
           ''
           lua <<EOF
-          local servers = { "tsserver", "hls" }
+          local servers = { "tsserver", "hls", "dhall_lsp_server" }
           
           local nvim_lsp = require('lspconfig')
 

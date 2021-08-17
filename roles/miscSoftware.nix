@@ -18,6 +18,9 @@ with pkgs;
     hunspellDicts.de_DE
     xournalpp
     openssl
+    dhall
+    dhall-json
+    dhall-lsp-server
   ] ++ lib.optionals (host == "work") [
     awscli2
     envsubst
