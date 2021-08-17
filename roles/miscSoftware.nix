@@ -21,6 +21,7 @@ with pkgs;
     dhall
     dhall-json
     dhall-lsp-server
+    vagrant
   ] ++ lib.optionals (host == "work") [
     awscli2
     envsubst
