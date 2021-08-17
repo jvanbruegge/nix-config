@@ -8,6 +8,7 @@ with pkgs;
     gnome.file-roller
     gnome.nautilus
     gnome.evince
+    gnome3.adwaita-icon-theme
     signal-desktop
     isabelle
     pdftk
@@ -15,6 +16,8 @@ with pkgs;
     qrencode
     libreoffice
     hunspellDicts.de_DE
+    xournalpp
+    openssl
   ] ++ lib.optionals (host == "work") [
     awscli2
     envsubst
