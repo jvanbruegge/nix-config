@@ -1,5 +1,7 @@
 { pkgs, config, lib, ... }:
 
+let env = "${config.xdg.configHome}/zsh/env";
+in
 {
   xdg.dataFile.empty = {
     target = "zsh/empty";
@@ -9,6 +11,11 @@
   home.packages = with pkgs; [
     xdg-utils
   ];
+
+  home.file.env = {
+    source = ./env.gpg;
+    target = ".config/zsh/env.gpg";
+  };
 
   programs.zsh = {
     enable = true;
@@ -34,6 +41,14 @@
 
     envExtra =
       ''
+      if [ ! -e "${env}" ] && [ -e "${env}.gpg" ]; then
+        gpg --decrypt "${env}.gpg" > "${env}"
+      fi
+
+      if [ -e "${env}" ]; then
+        source "${env}"
+      fi
+
       function k-env {
         kubectl config set-context $(kubectl config current-context) --namespace="$1"
       }
