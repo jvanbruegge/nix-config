@@ -18,6 +18,7 @@
 
       ch = "checkout";
       chb = "checkout -b";
+      chpr = "!sh -c 'git fetch origin pull/$1/head:pr/$1 && git checkout pr/$1' -";
 
       r = "rebase";
       rc = "rebase --continue";
