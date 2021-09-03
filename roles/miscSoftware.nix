@@ -22,6 +22,7 @@ with pkgs;
     dhall-json
     dhall-lsp-server
     vagrant
+    google-chrome
   ] ++ lib.optionals (host == "work") [
     awscli2
     envsubst
