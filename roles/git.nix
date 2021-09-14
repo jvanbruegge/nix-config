@@ -48,6 +48,7 @@
       core.pager = "less -F -X";
       commit.gpgSign = true;
       tag.gpgSign = true;
+      init.defaultBranch = "master";
     };
   };
 }
