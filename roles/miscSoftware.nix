@@ -23,6 +23,8 @@ with pkgs;
     dhall-lsp-server
     vagrant
     google-chrome
+    gnumake
+    texlive.combined.scheme-full
   ] ++ lib.optionals (host == "work") [
     awscli2
     envsubst
