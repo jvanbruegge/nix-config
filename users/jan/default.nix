@@ -6,7 +6,7 @@ in
   users.users."${login}" = {
     createHome = true;
     isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" ];
+    extraGroups = [ "wheel" "networkmanager" "libvirtd" "docker" ];
     group = "users";
     home = "/home/" + login;
     shell = pkgs.zsh;

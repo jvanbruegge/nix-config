@@ -69,12 +69,8 @@
 
   virtualisation = {
     docker.enable = true;
-    virtualbox.host = {
-      enable = true;
-      headless = true;
-    };
+    libvirtd.enable = true;
   };
-  users.users.jan.extraGroups = [ "docker" "vboxusers" ];
 
   services.printing.enable = true;
 }
