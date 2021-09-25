@@ -25,6 +25,7 @@ with pkgs;
     google-chrome
     gnumake
     texlive.combined.scheme-full
+    nodePackages.npm-check-updates
   ] ++ lib.optionals (host == "work") [
     awscli2
     envsubst
