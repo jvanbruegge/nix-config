@@ -6,6 +6,9 @@ let mkConfig = inputs: { host, configuration }: inputs.nixpkgs.lib.nixosSystem {
     ./users/jan
     inputs.home-manager.nixosModules.home-manager
     { home-manager.extraSpecialArgs = { host = host; }; }
+    ({ pkgs, ...}: {
+      nix.registry.nixpkgs.flake = inputs.nixpkgs;
+    })
   ];
 };
 in

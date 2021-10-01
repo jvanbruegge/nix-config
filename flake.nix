@@ -13,7 +13,6 @@
   let mkConfig = (import ./mkConfig.nix) inputs;
   in
   {
-    nix.registry.nixpkgs.flake = nixpkgs;
     nixosConfigurations = {
       "Jan-Laptop" = mkConfig { host = "laptop"; configuration = ./machines/laptop/configuration.nix; };
       "Jan-work" = mkConfig { host = "work"; configuration = ./machines/work/configuration.nix; };
