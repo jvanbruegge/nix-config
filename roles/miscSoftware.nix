@@ -26,6 +26,7 @@ with pkgs;
     gnumake
     texlive.combined.scheme-full
     nodePackages.npm-check-updates
+    nodePackages.browser-sync
   ] ++ lib.optionals (host == "work") [
     awscli2
     envsubst
