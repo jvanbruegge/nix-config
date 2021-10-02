@@ -47,6 +47,7 @@
       shutdown-hook 'echo `rm -f /tmp/neomutt/*`'
       '';
   };
-
-  services.mbsync.enable = true;
+  
+  # Disable automatic sync for the moment
+  # services.mbsync.enable = true;
 }
