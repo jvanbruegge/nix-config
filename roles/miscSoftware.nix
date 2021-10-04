@@ -4,29 +4,31 @@ with pkgs;
 
 {
   home.packages = with pkgs; [
-    gimp
-    gnome.file-roller
-    gnome.nautilus
-    gnome.evince
-    gnome3.adwaita-icon-theme
-    signal-desktop
-    isabelle
-    pdftk
-    kubectl
-    qrencode
-    libreoffice
-    hunspellDicts.de_DE
-    xournalpp
-    openssl
     dhall
     dhall-json
     dhall-lsp-server
-    vagrant
-    google-chrome
+    gimp
+    gnome.evince
+    gnome.file-roller
+    gnome.nautilus
+    gnome3.adwaita-icon-theme
     gnumake
-    texlive.combined.scheme-full
-    nodePackages.npm-check-updates
+    google-chrome
+    hunspellDicts.de_DE
+    inkscape
+    isabelle
+    kubectl
+    libreoffice
     nodePackages.browser-sync
+    nodePackages.npm-check-updates
+    nodePackages.prettier
+    openssl
+    pdftk
+    qrencode
+    signal-desktop
+    texlive.combined.scheme-full
+    vagrant
+    xournalpp
   ] ++ lib.optionals (host == "work") [
     awscli2
     envsubst
