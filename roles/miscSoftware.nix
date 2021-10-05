@@ -17,6 +17,7 @@ with pkgs;
     hunspellDicts.de_DE
     inkscape
     isabelle
+    jq
     kubectl
     libreoffice
     nodePackages.browser-sync
