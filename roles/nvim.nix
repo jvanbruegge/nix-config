@@ -213,7 +213,12 @@
       { plugin = vim-ormolu;
         config = "let g:ormolu_options=[\"-o -XTypeApplications\"]";
       }
-      vim-prettier
+      { plugin = vim-prettier;
+        config = ''
+          let g:prettier#autoformat_config_present = 1
+          let g:prettier#autoformat_require_pragma = 0
+          '';
+      }
     ];
   };
 }
