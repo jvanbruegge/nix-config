@@ -11,6 +11,7 @@ with pkgs;
     gnome.evince
     gnome.file-roller
     gnome.nautilus
+    gnome.eog
     gnome3.adwaita-icon-theme
     gnumake
     google-chrome
@@ -42,6 +43,10 @@ with pkgs;
     defaultApplications = {
       "application/pdf" = "org.gnome.Evince.desktop";
       "application/zip" = "org.gnome.FileRoller.desktop";
+      "image/png" = "org.gnome.eog.desktop";
+      "image/bmp" = "org.gnome.eog.desktop";
+      "image/jpeg" = "org.gnome.eog.desktop";
+      "image/svg+xml" = "org.gnome.eog.desktop";
     };
   };
 }
