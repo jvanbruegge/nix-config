@@ -31,6 +31,7 @@ with pkgs;
     texlive.combined.scheme-full
     vagrant
     xournalpp
+    mpv
   ] ++ lib.optionals (host == "work") [
     awscli2
     envsubst
@@ -47,6 +48,8 @@ with pkgs;
       "image/bmp" = "org.gnome.eog.desktop";
       "image/jpeg" = "org.gnome.eog.desktop";
       "image/svg+xml" = "org.gnome.eog.desktop";
+      "video/mp4" = "mpv.desktop";
+      "video/quicktime" = "mpv.desktop";
     };
   };
 }
