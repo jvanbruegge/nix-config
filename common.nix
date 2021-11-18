@@ -20,6 +20,11 @@
     allowUnfree = true;
   };
 
+  services.udev.extraRules =
+    ''
+    KERNEL=="ttyACM0", MODE="0666"
+    '';
+
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.plymouth = {
