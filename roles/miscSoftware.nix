@@ -8,10 +8,10 @@ with pkgs;
     dhall-json
     dhall-lsp-server
     gimp
+    gnome.eog
     gnome.evince
     gnome.file-roller
     gnome.nautilus
-    gnome.eog
     gnome3.adwaita-icon-theme
     gnumake
     google-chrome
@@ -21,6 +21,7 @@ with pkgs;
     jq
     kubectl
     libreoffice
+    mpv
     nodePackages.browser-sync
     nodePackages.npm-check-updates
     nodePackages.prettier
@@ -29,9 +30,9 @@ with pkgs;
     qrencode
     signal-desktop
     texlive.combined.scheme-full
+    usbutils
     vagrant
     xournalpp
-    mpv
   ] ++ lib.optionals (host == "work") [
     awscli2
     envsubst
