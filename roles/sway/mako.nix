@@ -2,7 +2,7 @@
 
 {
     programs.mako = {
-        enable = true;
-	defaultTimeout = 5;
+      enable = true;
+      defaultTimeout = 5000;
     };
 }
