@@ -33,6 +33,8 @@ with pkgs;
     usbutils
     vagrant
     xournalpp
+    jetbrains.idea-community
+    openjdk17
   ] ++ lib.optionals (host == "work") [
     awscli2
     envsubst
