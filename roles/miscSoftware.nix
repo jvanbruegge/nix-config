@@ -4,6 +4,7 @@ with pkgs;
 
 {
   home.packages = with pkgs; [
+    btop
     dhall
     dhall-json
     dhall-lsp-server
@@ -18,6 +19,7 @@ with pkgs;
     hunspellDicts.de_DE
     inkscape
     isabelle
+    jetbrains.idea-community
     jq
     kubectl
     libreoffice
@@ -25,6 +27,7 @@ with pkgs;
     nodePackages.browser-sync
     nodePackages.npm-check-updates
     nodePackages.prettier
+    openjdk17
     openssl
     pdftk
     qrencode
@@ -33,8 +36,6 @@ with pkgs;
     usbutils
     vagrant
     xournalpp
-    jetbrains.idea-community
-    openjdk17
   ] ++ lib.optionals (host == "work") [
     awscli2
     envsubst
