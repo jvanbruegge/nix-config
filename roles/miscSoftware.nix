@@ -8,6 +8,7 @@ with pkgs;
     dhall
     dhall-json
     dhall-lsp-server
+    fd
     gimp
     gnome.eog
     gnome.evince
@@ -32,6 +33,7 @@ with pkgs;
     pdftk
     qrencode
     signal-desktop
+    tealdeer
     texlive.combined.scheme-full
     usbutils
     vagrant
