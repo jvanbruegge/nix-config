@@ -32,7 +32,21 @@ in
     pamixer
     swaylock-effects
     brightnessctl
+    batsignal
   ];
+
+  # Notify on low battery
+  systemd.user.services.batsignal = {
+    Install.WantedBy = [ "graphical-session.target" ];
+    Unit = {
+      Description = "Battery status daemon";
+      PartOf = [ "graphical-session.target" ];
+    };
+    Service = {
+      Type = "simple";
+      ExecStart = "${pkgs.batsignal}/bin/batsignal";
+    };
+  };
 
   home.file = {
     wallpaper = {
