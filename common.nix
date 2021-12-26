@@ -1,8 +1,10 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, host, ... }:
 {
   imports = [
     ./pipewire.nix
   ];
+  
+  programs.steam.enable = host != "work";
 
   nix = {
     package = pkgs.nixFlakes;

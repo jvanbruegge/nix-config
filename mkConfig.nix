@@ -1,5 +1,5 @@
 let mkConfig = inputs: { host, configuration }: inputs.nixpkgs.lib.nixosSystem {
-  specialArgs = { inherit inputs; };
+  specialArgs = { inherit inputs; host = host; };
   system = "x86_64-linux";
   modules = [
     configuration
