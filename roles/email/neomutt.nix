@@ -6,6 +6,10 @@
 
   accounts.email.maildirBasePath = "Mail";
 
+  home.packages = with pkgs; [
+    urlscan
+  ];
+
   home.file.mailcap = {
     target = ".config/neomutt/mailcap";
     text =
@@ -40,6 +44,16 @@
         action = "<sidebar-next><sidebar-open>";
         key = "\\Cj";
         map = [ "index" "pager" ];
+      }
+      {
+        action = "<pipe-message> urlscan<Enter>";
+        key = "f";
+        map = [ "index" "pager" ];
+      }
+      {
+        action = "<pipe-entry> urlscan<Enter>";
+        key = "\\Cb";
+        map = [ "attach" "compose" ];
       }
     ];
     extraConfig =
