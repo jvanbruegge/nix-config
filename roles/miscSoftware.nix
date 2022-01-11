@@ -31,6 +31,7 @@ with pkgs;
     openjdk17
     openssl
     pdftk
+    pre-commit
     qrencode
     signal-desktop
     tealdeer
