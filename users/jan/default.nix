@@ -14,7 +14,7 @@ in
 
   programs.sway.enable = true;
 
-  nix.trustedUsers = [ login ];
+  nix.settings.trusted-users = [ login ];
 
   home-manager.users."${login}" = import ./home.nix;
 
