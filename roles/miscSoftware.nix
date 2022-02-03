@@ -17,6 +17,7 @@ with pkgs;
     gnome3.adwaita-icon-theme
     gnumake
     google-chrome
+    hexyl
     hunspellDicts.de_DE
     inkscape
     isabelle
