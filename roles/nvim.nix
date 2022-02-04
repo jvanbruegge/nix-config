@@ -100,7 +100,7 @@
           local servers = { "tsserver", "hls", "dhall_lsp_server" }
           
           local nvim_lsp = require('lspconfig')
-
+          
           -- after the language server attaches to the current buffer
           local on_attach = function(client, bufnr)
             local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
@@ -115,6 +115,13 @@
             buf_set_keymap('n', '<leader>q', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
             buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
             buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
+
+            -- Code lens support
+            if client.resolved_capabilities.code_lens then
+              vim.api.nvim_command([[autocmd BufEnter,InsertLeave * silent! lua vim.lsp.codelens.refresh()]])
+              buf_set_keymap('n', '<leader>l', '<cmd>lua vim.lsp.codelens.run()<CR>', opts)
+              vim.lsp.codelens.refresh()
+            end
           end
 
           -- Use a loop to conveniently call 'setup' on multiple servers and
