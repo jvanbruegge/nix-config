@@ -115,6 +115,7 @@
             buf_set_keymap('n', '<leader>q', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
             buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
             buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
+            buf_set_keymap('n', '<C-i>', '<cmd>lua vim.lsp.buf.formatting_sync(nil, 1000)<CR>', opts)
 
             -- Code lens support
             if client.resolved_capabilities.code_lens then
