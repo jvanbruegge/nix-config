@@ -35,6 +35,7 @@ with pkgs;
     pre-commit
     qrencode
     signal-desktop
+    squeekboard
     tealdeer
     texlive.combined.scheme-full
     usbutils
