@@ -34,6 +34,7 @@ with pkgs;
     pdftk
     pre-commit
     qrencode
+    shellcheck
     signal-desktop
     squeekboard
     tealdeer
