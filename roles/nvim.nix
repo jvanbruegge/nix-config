@@ -94,9 +94,9 @@
           '';
       }
       { plugin = nvim-lspconfig;
+        type = "lua";
         config =
           ''
-          lua <<EOF
           local servers = { "tsserver", "hls", "dhall_lsp_server" }
           
           local nvim_lsp = require('lspconfig')
@@ -135,13 +135,12 @@
               }
             }
           end
-          EOF
           '';
       }
       { plugin = nvim-compe;
+        type = "lua";
         config =
           ''
-          lua <<EOF
           vim.o.completeopt = "menuone,noselect"
 
           require('compe').setup {
@@ -206,7 +205,6 @@
           vim.api.nvim_set_keymap("s", "<Tab>", "v:lua.tab_complete()", {expr = true})
           vim.api.nvim_set_keymap("i", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
           vim.api.nvim_set_keymap("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
-          EOF
           '';
       }
       popup-nvim
@@ -228,16 +226,16 @@
           '';
       }
       { plugin = null-ls-nvim;
+        type = "lua";
         config = ''
-          lua <<EOF
           local null_ls = require("null-ls")
           null_ls.setup({
             sources = {
               null_ls.builtins.diagnostics.shellcheck,
               null_ls.builtins.code_actions.shellcheck
-            }
+            },
+            on_attach = on_attach
           })
-          EOF
         '';
       }
     ];
