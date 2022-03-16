@@ -45,6 +45,11 @@
       vnoremap <leader>p "+p
       vnoremap <leader>P "+P
 
+      nmap <silent> <c-h> :wincmd h<cr>
+      nmap <silent> <c-j> :wincmd j<cr>
+      nmap <silent> <c-k> :wincmd k<cr>
+      nmap <silent> <c-l> :wincmd l<cr>
+
       "Allow to incrment letters with Ctrl+A
       set nrformats=alpha
 
@@ -236,6 +241,23 @@
             },
             on_attach = on_attach
           })
+        '';
+      }
+      nvim-web-devicons
+      {
+        plugin = trouble-nvim;
+        type = "lua";
+        config = ''
+          require("trouble").setup { }
+          vim.api.nvim_set_keymap("n", "<leader>d", "<cmd>TroubleToggle document_diagnostics<cr>",
+            {silent = true, noremap = true}
+          )
+          vim.api.nvim_set_keymap("n", "<leader>xq", "<cmd>TroubleToggle quickfix<cr>",
+            {silent = true, noremap = true}
+          )
+          vim.api.nvim_set_keymap("n", "<leader>r", "<cmd>Trouble lsp_references<cr>",
+            {silent = true, noremap = true}
+          )
         '';
       }
     ];
