@@ -20,7 +20,7 @@ with pkgs;
     hexyl
     hunspellDicts.de_DE
     inkscape
-    isabelle
+    (isabelle.withComponents (p: with p; [ isabelle-linter ]))
     jetbrains.idea-community
     jq
     kubectl
