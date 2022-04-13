@@ -221,9 +221,9 @@
           nnoremap <space>t <cmd>tabnew<cr><cmd>Telescope find_files<cr>
           '';
       }
-      { plugin = vim-ormolu;
-        config = "let g:ormolu_options=[\"-o -XTypeApplications\"]";
-      }
+      #{ plugin = vim-ormolu;
+      #  config = "let g:ormolu_options=[\"-o -XTypeApplications\"]";
+      #}
       { plugin = vim-prettier;
         config = ''
           let g:prettier#autoformat_config_present = 1
