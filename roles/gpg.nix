@@ -4,8 +4,7 @@
   home.activation = {
     getGPGkey = lib.hm.dag.entryAfter ["writeBoundary"]
       ''
-      $DRY_RUN_CMD gpg --keyserver keyserver.ubuntu.com --recv-keys 0x366572be7d6c78a2
-      $DRY_RUN_CMD gpgconf --reload gpg-agent
+      $DRY_RUN_CMD gpg --keyserver keyserver.ubuntu.com --recv-keys 0x366572be7d6c78a2 && gpgconf --reload gpg-agent || true
       '';
   };
 
