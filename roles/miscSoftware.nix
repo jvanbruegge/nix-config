@@ -8,6 +8,7 @@ with pkgs;
     dhall
     dhall-json
     dhall-lsp-server
+    dnsutils
     fd
     gimp
     gnome.eog
@@ -39,9 +40,12 @@ with pkgs;
     squeekboard
     tealdeer
     texlive.combined.scheme-full
+    traceroute
+    tree
     usbutils
     vagrant
     xournalpp
+    zip
   ] ++ lib.optionals (host == "work") [
     awscli2
     envsubst
