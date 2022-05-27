@@ -38,6 +38,7 @@ with pkgs;
     shellcheck
     signal-desktop
     squeekboard
+    speechd
     tealdeer
     texlive.combined.scheme-full
     traceroute
