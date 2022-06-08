@@ -20,6 +20,10 @@
     allowUnfree = true;
   };
 
+  services.gvfs = {
+    enable = true;
+    package = pkgs.gnome3.gvfs;
+  };
   services.udev.extraRules =
     ''
     KERNEL=="ttyACM0", MODE="0666"
