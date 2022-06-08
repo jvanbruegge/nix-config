@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-set -euo pipefail
-
 if [ -z "$(which ffmpeg)" ] || [ -z "$(which audible)" ] || [ -z "$(which jq)" ]; then
     echo "Error: Needs ffmpeg, audible-cli and jq installed"
 fi
@@ -11,6 +9,8 @@ if [[ -z "$1" && -z "$2" ]]; then
     audible library list
     exit 1
 fi
+
+set -euo pipefail
 
 asin="$1"
 
