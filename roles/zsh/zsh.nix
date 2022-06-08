@@ -12,9 +12,16 @@ in
     xdg-utils
   ];
 
-  home.file.env = {
-    source = ./env.gpg;
-    target = ".config/zsh/env.gpg";
+  home.file = {
+    env = {
+      source = ./env.gpg;
+      target = ".config/zsh/env.gpg";
+    };
+    audible-convert = {
+      source = ../../scripts/audible-convert.sh;
+      target = ".config/zsh/audible-convert.sh";
+      executable = true;
+    };
   };
 
   programs.direnv = {
@@ -121,6 +128,7 @@ in
       px = "pnpx";
       k = "kubectl";
       n = "neomutt";
+      audible-convert = "$HOME/.config/zsh/audible-convert.sh";
     };
   };
 }

@@ -4,12 +4,14 @@ with pkgs;
 
 {
   home.packages = with pkgs; [
+    audible-cli
     btop
     dhall
     dhall-json
     dhall-lsp-server
     dnsutils
     fd
+    ffmpeg
     gimp
     gnome.eog
     gnome.evince
