@@ -17,7 +17,7 @@ asin="$1"
 dir=$(mktemp -d)
 echo "$dir"
 
-audible download -a "$asin" --aax-fallback --cover --cover-size 1215 --chapter -o "$dir"
+audible download -a "$asin" --aax --cover --cover-size 1215 --chapter -o "$dir"
 
 info=$(audible api -p response_groups="media,contributors,series,category_ladders" /1.0/library/"$asin" | jq '.item')
 
@@ -63,3 +63,5 @@ ffmpeg -activation_bytes "$bytes" \
     -metadata:s:v title="Album cover" -metadata:s:v comment="Cover (front)" \
     -metadata:s:a language="$(echo "$info" | jq -r '.language.[0:3]')" \
     "$2"
+
+rm -r "$dir"
