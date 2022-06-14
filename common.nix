@@ -35,6 +35,8 @@
     enable = true;
   };
 
+  services.fwupd.enable = true;
+
   networking.networkmanager = {
     enable = true;
     plugins = with pkgs; [
