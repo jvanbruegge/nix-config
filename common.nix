@@ -36,6 +36,8 @@
   };
 
   services.fwupd.enable = true;
+  services.neard.enable = true;
+  services.fprintd.enable = true;
 
   networking.networkmanager = {
     enable = true;
