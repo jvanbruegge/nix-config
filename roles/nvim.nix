@@ -102,7 +102,7 @@
         type = "lua";
         config =
           ''
-          local servers = { "tsserver", "hls", "dhall_lsp_server" }
+          local servers = { "tsserver", "hls", "dhall_lsp_server", "rust_analyzer" }
           
           local nvim_lsp = require('lspconfig')
           
