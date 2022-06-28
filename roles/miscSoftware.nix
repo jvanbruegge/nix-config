@@ -52,7 +52,6 @@ with pkgs;
   ] ++ lib.optionals (host == "work") [
     awscli2
     envsubst
-    citrix_workspace
   ] ++ lib.optionals (host == "laptop") [
     discord
   ];

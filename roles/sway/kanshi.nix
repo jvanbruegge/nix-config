@@ -2,6 +2,7 @@
 let
   monitors = {
     laptop = "eDP-1";
+    work = "Sharp Corporation 0x14D0 0x00000000";
     home = {
       left = "Samsung Electric Company U28E590 HTPK602401";
       right = "Samsung Electric Company U28E590 HTPK602370";
@@ -34,13 +35,22 @@ in
         }
       ];
 
-      mobile.outputs = [
+      work-mobile.outputs = [
         {
-          criteria = monitors.laptop;
-          scale = 1.5;
+          criteria = monitors.work;
+          scale = 2.0;
           status = "enable";
         }
       ];
+
+      # TODO: get full id of display
+      #mobile.outputs = [
+      #  {
+      #    criteria = monitors.laptop;
+      #    scale = 1.5;
+      #    status = "enable";
+      #  }
+      #];
 
     };
   };
