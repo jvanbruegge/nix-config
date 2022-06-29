@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 let
   monitors = {
-    laptop = "eDP-1";
+    laptop = "Unknown 0x1336 0x00000000";
     work = "Sharp Corporation 0x14D0 0x00000000";
     home = {
       left = "Samsung Electric Company U28E590 HTPK602401";
@@ -43,15 +43,13 @@ in
         }
       ];
 
-      # TODO: get full id of display
-      #mobile.outputs = [
-      #  {
-      #    criteria = monitors.laptop;
-      #    scale = 1.5;
-      #    status = "enable";
-      #  }
-      #];
-
+      mobile.outputs = [
+        {
+          criteria = monitors.laptop;
+          scale = 1.5;
+          status = "enable";
+        }
+      ];
     };
   };
 }
