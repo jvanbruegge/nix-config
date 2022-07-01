@@ -30,7 +30,7 @@ in
           status = "enable";
         }
         {
-          criteria = monitors.laptop;
+          criteria = "eDP-1";
           status = "disable";
         }
       ];
