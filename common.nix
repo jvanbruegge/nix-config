@@ -4,8 +4,6 @@
     ./pipewire.nix
   ];
   
-  programs.steam.enable = host != "work";
-
   nix = {
     nixPath = [ "nixpkgs=${pkgs.path}" ];
     extraOptions = ''
