@@ -28,6 +28,7 @@ in
     grim
     slurp
     wl-clipboard
+    wl-mirror
     wofi
     pamixer
     swaylock-effects
@@ -106,6 +107,10 @@ in
       export _JAVA_AWT_WM_NONREPARENTING=1
       '';
 
+    extraConfig = ''
+      for_window [app_id="at.yrlf.wl_mirror"] fullscreen enable
+    '';
+
     config = {
       bars = [];
       modifier = "Mod4";
@@ -144,6 +149,9 @@ in
 
         # Lock screen
         "${modifier}+Shift+Return" = "exec ${config.xdg.configHome}/sway/lock.sh";
+
+        # Screen mirror
+        "${modifier}+Shift+p" = "exec wl-mirror $(slurp -o -f '%o')";
 
         # Move focus
         "${modifier}+${left}" = "focus left";
