@@ -18,6 +18,8 @@
     allowUnfree = true;
   };
 
+  programs.adb.enable = true;
+
   services.gvfs = {
     enable = true;
     package = pkgs.gnome3.gvfs;
