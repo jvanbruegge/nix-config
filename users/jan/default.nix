@@ -18,7 +18,7 @@ in
 
   home-manager.users."${login}" = import ./home.nix;
 
-  time.timeZone = "Europe/Berlin";
+  time.timeZone = "Europe/London";
 
   i18n.defaultLocale = "en_US.UTF-8";
 }
