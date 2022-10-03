@@ -17,7 +17,7 @@ with pkgs;
     gnome.evince
     gnome.file-roller
     gnome.nautilus
-    gnome3.adwaita-icon-theme
+    gnome.adwaita-icon-theme
     gnumake
     google-chrome
     hexyl

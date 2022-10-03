@@ -22,7 +22,7 @@
 
   services.gvfs = {
     enable = true;
-    package = pkgs.gnome3.gvfs;
+    package = pkgs.gnome.gvfs;
   };
   services.udev.extraRules =
     ''
