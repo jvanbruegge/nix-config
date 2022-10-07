@@ -1,4 +1,4 @@
-{ pkgs, host, lib, ... }:
+{ pkgs, host, lib, inputs, ... }:
 
 with pkgs;
 
@@ -23,7 +23,7 @@ with pkgs;
     hexyl
     hunspellDicts.de_DE
     inkscape
-    (isabelle.withComponents (p: with p; [ isabelle-linter ]))
+    (inputs.nixpkgs-fork.legacyPackages.x86_64-linux.isabelle.withComponents (p: with p; [ isabelle-linter ]))
     jetbrains.idea-community
     jq
     kubectl

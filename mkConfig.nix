@@ -5,7 +5,7 @@ let mkConfig = inputs: { host, configuration }: inputs.nixpkgs.lib.nixosSystem {
     configuration
     ./users/jan
     inputs.home-manager.nixosModules.home-manager
-    { home-manager.extraSpecialArgs = { host = host; }; }
+    { home-manager.extraSpecialArgs = { host = host; inherit inputs; }; }
     ({ pkgs, ...}: {
       nix.registry.nixpkgs.flake = inputs.nixpkgs;
     })
