@@ -23,7 +23,11 @@ with pkgs;
     hexyl
     hunspellDicts.de_DE
     inkscape
-    (inputs.nixpkgs-fork.legacyPackages.x86_64-linux.isabelle.withComponents (p: with p; [ isabelle-linter ]))
+    ((inputs.nixpkgs-fork.legacyPackages.x86_64-linux.isabelle.override {
+      srcUrl = "http://localhost:8000";
+      srcRev = "9b48d1ed8a7f";
+      srcSha256 = "sha256-icM7zWc+BA+I6vfLSE1NNagTHWWAOBq2ZNPJbX54YYM=";
+    })) #.withComponents (p: with p; [ isabelle-linter ]))
     jetbrains.idea-community
     jq
     kubectl
