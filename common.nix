@@ -2,6 +2,7 @@
 {
   imports = [
     ./pipewire.nix
+    ./email/default.nix
   ];
   
   nix = {

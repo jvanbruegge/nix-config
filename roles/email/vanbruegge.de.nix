@@ -23,7 +23,6 @@
         extraMailboxes = [ "Sent" "Drafts" "Spam" ];
       };
       passwordCommand = "gpg --decrypt ~/.config/neomutt/vanbruegge-de-password.gpg";
-      primary = true;
       realName = "Jan van Brügge";
     };
   };
