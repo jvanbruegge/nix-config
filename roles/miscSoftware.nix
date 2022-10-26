@@ -25,8 +25,8 @@ with pkgs;
     inkscape
     ((inputs.nixpkgs-fork.legacyPackages.x86_64-linux.isabelle.override {
       srcUrl = "http://localhost:8000";
-      srcRev = "9b48d1ed8a7f";
-      srcSha256 = "sha256-icM7zWc+BA+I6vfLSE1NNagTHWWAOBq2ZNPJbX54YYM=";
+      srcRev = "9f2d6f5eb0a2";
+      srcSha256 = "16sfajag5d3r7plbwvak89gdb5hk9gpklb4xzd4iywhnlvddgfc0";
     })) #.withComponents (p: with p; [ isabelle-linter ]))
     jetbrains.idea-community
     jq
