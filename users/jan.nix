@@ -12,11 +12,7 @@ in
     shell = pkgs.zsh;
   };
 
-  programs.sway.enable = true;
-
   nix.settings.trusted-users = [ login ];
-
-  home-manager.users."${login}" = import ./home.nix;
 
   time.timeZone = "Europe/London";
 

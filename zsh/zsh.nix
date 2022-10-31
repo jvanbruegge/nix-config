@@ -18,7 +18,7 @@ in
       target = ".config/zsh/env.gpg";
     };
     audible-convert = {
-      source = ../../scripts/audible-convert.sh;
+      source = ../scripts/audible-convert.sh;
       target = ".config/zsh/audible-convert.sh";
       executable = true;
     };

@@ -1,15 +1,10 @@
-{ config, pkgs, host, ... }:
+{ config, pkgs, ... }:
 
 {
   programs.git = {
     enable = true;
     userName = "Jan van Brügge";
-    userEmail =
-      if host == "work"
-      then
-        "jan.van.brugge@futurice.com"
-      else
-        "supermanitu@gmail.com";
+    userEmail = "supermanitu@gmail.com";
 
     aliases = {
       c = "commit";
