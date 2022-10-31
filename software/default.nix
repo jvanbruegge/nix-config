@@ -26,11 +26,32 @@
       hexyl
       hunspellDicts.de_DE
       inkscape
-      ((nixpkgs-fork.legacyPackages.x86_64-linux.isabelle.override {
-        srcUrl = "http://localhost:8000";
-        srcRev = "9f2d6f5eb0a2";
-        srcSha256 = "16sfajag5d3r7plbwvak89gdb5hk9gpklb4xzd4iywhnlvddgfc0";
-      })) #.withComponents (p: with p; [ isabelle-linter ]))
+      (nixpkgs-fork.legacyPackages.x86_64-linux.isabelle.overrideAttrs (_:
+        let
+          src_dev = fetchhg {
+            url = "https://isabelle.sketis.net/repos/isabelle";
+            rev = "fc35dc967344";
+            sha256 = "0a473wjhkg39vy16jrmv621q8l3byr34wh2qxa152f77fbn82lnp";
+          };
+          zstd = fetchzip {
+            url = "https://isabelle.in.tum.de/components/zstd-jni-1.5.2-5.tar.gz";
+            sha256 = "052dxzwll5q85i2wwlg4gy7y462b6s10iaxxcjkh2cnsxs8qls66";
+          };
+        in {
+          prePatch = ''
+            rm -r src/
+            cp -r ${src_dev}/src ./
+            cp ${src_dev}/etc/build.props etc/
+            chmod -R +w ./src
+
+            name='contrib/zstd-jni-1.5.2-5'
+            echo $name >> etc/components
+            mkdir -p $name
+            cp -r ${zstd}/* $name
+            chmod -R +w $name
+          '';
+        }
+      ))
       jetbrains.idea-community
       jq
       kubectl
