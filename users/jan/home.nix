@@ -3,7 +3,6 @@
 {
   imports = [
     ../../roles/development.nix
-    ../../roles/email/email.nix
     ../../roles/miscSoftware.nix
   ];
 
