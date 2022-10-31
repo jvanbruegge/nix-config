@@ -24,5 +24,20 @@
       primary = true;
       realName = "Jan van Brügge";
     };
+
+    gmail = {
+      aerc = {
+        enable = true;
+        extraAccounts = {
+          folders-sort = ["INBOX"];
+          default = "INBOX";
+        };
+      };
+
+      address = "supermanitu@gmail.com";
+      passwordCommand = "~/.config/aerc/get-password.sh gmail";
+      flavor = "gmail.com";
+      realName = "Jan van Brügge";
+    };
   };
 }
