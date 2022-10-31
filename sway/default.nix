@@ -1,29 +1,22 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 {
-  hardware.opengl = {
-    enable = true;
-    extraPackages = with pkgs; [
-      intel-media-driver
-      #vaapiIntel
-      vaapiVdpau
-      libvdpau-va-gl
-    ];
-  };
+  programs.sway.enable = true;
 
   users.users.greeter = {
     group = "greeter";
     isSystemUser = true;
   };
-  users.groups.greeter = {};
 
   services.greetd = {
     enable = true;
     settings = {
       default_session = {
         command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd 'sh -c \"LIBSEAT_BACKEND=logind systemd-cat --identifier=sway sway\"'";
-        user = "greeter";
       };
     };
   };
 
+  home-manager.users.jan = {
+    imports = [ ./sway.nix ];
+  };
 }

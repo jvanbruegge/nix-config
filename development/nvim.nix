@@ -123,7 +123,7 @@
             buf_set_keymap('n', '<C-i>', '<cmd>lua vim.lsp.buf.formatting_sync(nil, 1000)<CR>', opts)
 
             -- Code lens support
-            if client.resolved_capabilities.code_lens then
+            if client.server_capabilities.code_lens then
               vim.api.nvim_command([[autocmd BufEnter,InsertLeave * silent! lua vim.lsp.codelens.refresh()]])
               buf_set_keymap('n', '<leader>l', '<cmd>lua vim.lsp.codelens.run()<CR>', opts)
               vim.lsp.codelens.refresh()
