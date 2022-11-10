@@ -1,5 +1,7 @@
 { pkgs, nixpkgs-fork, ... }:
 {
+  programs.adb.enable = true;
+
   home-manager.users.jan = { pkgs, ... }: {
     imports = [
       ./firefox.nix
