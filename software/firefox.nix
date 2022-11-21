@@ -14,7 +14,6 @@
   programs.firefox = {
     enable = true;
     package = pkgs.firefox.override {
-      forceWayland = true;
       cfg.enableTridactylNative = true;
     };
     profiles.jan = {
