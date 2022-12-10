@@ -28,7 +28,7 @@
       hexyl
       hunspellDicts.de_DE
       inkscape
-      (nixpkgs-fork.legacyPackages.x86_64-linux.isabelle.overrideAttrs (_:
+      ((isabelle.overrideAttrs (_:
         let
           src_dev = fetchhg {
             url = "https://isabelle.sketis.net/repos/isabelle";
@@ -53,7 +53,7 @@
             chmod -R +w $name
           '';
         }
-      ))
+      )).withComponents (p: [p.isabelle-linter]))
       jetbrains.idea-community
       jq
       kubectl
