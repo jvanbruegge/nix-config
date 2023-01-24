@@ -31,7 +31,7 @@ in
     wl-mirror
     wofi
     pamixer
-    swaylock-effects
+    swaylock
     brightnessctl
     batsignal
   ];
@@ -78,7 +78,7 @@ in
           rm "$list"
         fi
 
-        systemd-cat --identifier swaylock ${pkgs.swaylock-effects}/bin/swaylock -d --clock --datestr '%d.%m.%Y' --indicator -ef -i "$wallpapers/$file"
+        systemd-cat --identifier swaylock ${pkgs.swaylock}/bin/swaylock --indicator-idle-visible -d -ef -i "$wallpapers/$file"
       '';
     };
 
