@@ -58,7 +58,9 @@ title=\((.title))
 
 ffmpeg -activation_bytes "$bytes" \
     -i "$dir"/*.aax* -i "$dir"/*.jpg -i "$chapter_txt" \
-    -map 0:a:0 -map 1:v:0 -map_metadata 2 -map_chapters 2 -c copy \
+    -map 0:a -map 1:v -map_metadata 2 -map_chapters 2 -c:v copy \
+    -c:a aac \
+    -id3v2_version 3 \
     -disposition:v attached_pic -movflags +faststart -movflags +use_metadata_tags \
     -metadata:s:v title="Album cover" -metadata:s:v comment="Cover (front)" \
     -metadata:s:a language="$(echo "$info" | jq -r '.language.[0:3]')" \
