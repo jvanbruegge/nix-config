@@ -1,6 +1,7 @@
 { pkgs, nixpkgs-fork, ... }:
 {
   programs.adb.enable = true;
+  programs.steam.enable = true;
 
   home-manager.users.jan = { pkgs, ... }: {
     imports = [
@@ -28,6 +29,7 @@
       hexyl
       hunspellDicts.de_DE
       inkscape
+      inotify-tools
       ((isabelle.overrideAttrs (_:
         let
           src_dev = fetchhg {
