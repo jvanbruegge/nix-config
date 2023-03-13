@@ -8,7 +8,6 @@
     virtualbox.host = {
       enable = true;
       headless = true;
-      enableExtensionPack = true;
     };
   };
   users.users.jan.extraGroups = [ "docker" "vboxusers" ];
