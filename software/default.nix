@@ -11,6 +11,7 @@
     home.packages = with pkgs; [
       audible-cli
       btop
+      cura
       dhall
       dhall-json
       dhall-lsp-server
@@ -18,6 +19,7 @@
       dnsutils
       fd
       ffmpeg
+      freecad
       gimp
       gnome.eog
       gnome.evince
