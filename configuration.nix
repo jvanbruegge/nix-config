@@ -12,6 +12,7 @@
     ./users/jan.nix
   ];
 
+  programs.zsh.enable = true;
   home-manager.users.jan = {
     imports = [ ./zsh/zsh.nix ];
     home.stateVersion = "21.05";
