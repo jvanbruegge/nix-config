@@ -11,6 +11,7 @@
     home.packages = with pkgs; [
       audible-cli
       btop
+      cabal-install
       cura
       dhall
       dhall-json
@@ -20,6 +21,7 @@
       fd
       ffmpeg
       freecad
+      haskell.compiler.ghc94
       gimp
       gnome.eog
       gnome.evince
