@@ -5,10 +5,6 @@
 
   virtualisation = {
     docker.enable = true;
-    virtualbox.host = {
-      enable = true;
-      headless = true;
-    };
   };
   users.users.jan.extraGroups = [ "docker" "vboxusers" ];
 
