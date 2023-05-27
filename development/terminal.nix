@@ -6,7 +6,7 @@
     settings = {
       font = {
         normal = {
-          family = "BitstreamVeraSansMono Nerd Font";
+          family = "BitstromWera Nerd Font";
           style = "Regular";
         };
         size = 11;
