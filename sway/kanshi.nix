@@ -1,8 +1,7 @@
 { config, pkgs, ... }:
 let
   monitors = {
-    laptop = "Unknown 0x1336 0x00000000";
-    work = "Sharp Corporation 0x14D0 0x00000000";
+    laptop = "AU Optronics 0x1336 Unknown";
     home = {
       left = "Samsung Electric Company U28E590 HTPK602401";
       right = "Samsung Electric Company U28E590 HTPK602370";
@@ -27,18 +26,6 @@ in
           mode = "1920x1080@60Hz";
           position = "2560,0";
           scale = 1.0;
-          status = "enable";
-        }
-        {
-          criteria = "eDP-1";
-          status = "disable";
-        }
-      ];
-
-      work-mobile.outputs = [
-        {
-          criteria = monitors.work;
-          scale = 2.0;
           status = "enable";
         }
       ];
