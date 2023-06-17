@@ -17,14 +17,27 @@ asin="$1"
 dir=$(mktemp -d)
 echo "$dir"
 
-audible download -a "$asin" --aax --cover --cover-size 1215 --chapter -o "$dir"
+audible download -a "$asin" --aax-fallback --cover --cover-size 1215 --chapter -o "$dir"
 
 info=$(audible api -p response_groups="media,contributors,series,category_ladders" /1.0/library/"$asin" | jq '.item')
 
 chapter_txt="$dir/chapters.txt"
 series_info=$(echo "$info" | jq '.series | if (length > 0) then sort_by(.sequence | tonumber) | .[-1] else "" end')
-bytes=$(audible activation-bytes)
-copyright=$(ffprobe -activation_bytes "$bytes" "$dir"/*.aax* 2>&1 | grep copyright | sed 's/^.*: //')
+
+for _ in "$dir"/*.voucher; do
+  echo "Preparing to decrypt aacx file"
+  key=$(jq -r '.content_license.license_response.key' < $dir/*.voucher)
+  iv=$(jq -r '.content_license.license_response.iv' < $dir/*.voucher)
+  decrypt="-audible_key $key -audible_iv $iv"
+done
+if [ -z "$key" ]; then
+  echo "Preparing to decrypt aac file"
+  decrypt="-activation_bytes $(audible activation-bytes)"
+fi
+echo "$decrypt"
+
+# shellcheck disable=2086
+copyright=$(ffprobe $decrypt "$dir"/*.aax* 2>&1 | grep copyright | sed 's/^.*: //')
 
 # Write book metadata
 echo ";FFMETADATA1
@@ -56,7 +69,8 @@ END=\((.start_offset_ms + .length_ms))
 title=\((.title))
 "' < "$dir"/*.json >> "$chapter_txt"
 
-ffmpeg -activation_bytes "$bytes" \
+# shellcheck disable=2086
+ffmpeg $decrypt \
     -i "$dir"/*.aax* -i "$dir"/*.jpg -i "$chapter_txt" \
     -map 0:a -map 1:v -map_metadata 2 -map_chapters 2 -c:v copy \
     -c:a aac \
