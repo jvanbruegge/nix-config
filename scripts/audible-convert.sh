@@ -5,11 +5,12 @@ if [ -z "$(which ffmpeg)" ] || [ -z "$(which audible)" ] || [ -z "$(which jq)" ]
 fi
 
 if [[ -z "$1" && -z "$2" ]]; then
-    echo "Usage: ./convert.sh <ASIN> <outFile>"
+    echo "Usage: ./convert.sh <ASIN> <outFile> [--aacx]"
     audible library list
     exit 1
 fi
 
+ext="$3"
 set -euo pipefail
 
 asin="$1"
@@ -17,17 +18,23 @@ asin="$1"
 dir=$(mktemp -d)
 echo "$dir"
 
-audible download -a "$asin" --aax-fallback --cover --cover-size 1215 --chapter -o "$dir"
+if [ "$ext" == "--aacx" ]; then
+  aax="--aaxc"
+else
+  aax="--aax-fallback"
+fi
+
+audible download -a "$asin" "$aax" --cover --cover-size 1215 --chapter -o "$dir"
 
 info=$(audible api -p response_groups="media,contributors,series,category_ladders" /1.0/library/"$asin" | jq '.item')
 
 chapter_txt="$dir/chapters.txt"
 series_info=$(echo "$info" | jq '.series | if (length > 0) then sort_by(.sequence | tonumber) | .[-1] else "" end')
 
-for _ in "$dir"/*.voucher; do
+for f in "$dir"/*.voucher; do
   echo "Preparing to decrypt aacx file"
-  key=$(jq -r '.content_license.license_response.key' < $dir/*.voucher)
-  iv=$(jq -r '.content_license.license_response.iv' < $dir/*.voucher)
+  key=$(jq -r '.content_license.license_response.key' < "$f")
+  iv=$(jq -r '.content_license.license_response.iv' < "$f")
   decrypt="-audible_key $key -audible_iv $iv"
 done
 if [ -z "$key" ]; then
@@ -69,6 +76,8 @@ END=\((.start_offset_ms + .length_ms))
 title=\((.title))
 "' < "$dir"/*.json >> "$chapter_txt"
 
+# We reencode the file because some players have problems with the way audible encodes their files
+# the ffmpeg reencode "cleans up" the file
 # shellcheck disable=2086
 ffmpeg $decrypt \
     -i "$dir"/*.aax* -i "$dir"/*.jpg -i "$chapter_txt" \
