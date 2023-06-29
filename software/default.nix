@@ -60,7 +60,6 @@
           '';
         }
       )).withComponents (p: [p.isabelle-linter]))
-      jetbrains.idea-community
       jq
       kubectl
       libreoffice
