@@ -28,6 +28,10 @@ in
           scale = 1.0;
           status = "enable";
         }
+        {
+          criteria = monitors.laptop;
+          status = "disable";
+        }
       ];
 
       mobile.outputs = [
