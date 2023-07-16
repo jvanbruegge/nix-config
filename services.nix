@@ -5,8 +5,10 @@
 
   virtualisation = {
     docker.enable = true;
+    virtualbox.host.enable = true;
   };
   users.users.jan.extraGroups = [ "docker" "vboxusers" ];
+  users.extraGroups.vboxusers.members = [ "jan" ];
 
   xdg.portal = {
     enable = true;

@@ -81,6 +81,7 @@
       traceroute
       tree
       usbutils
+      vagrant
       vlc
       xournalpp
       zip
