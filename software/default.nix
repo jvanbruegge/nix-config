@@ -80,6 +80,7 @@
       texlive.combined.scheme-full
       traceroute
       tree
+      unzip
       usbutils
       vagrant
       vlc
