@@ -36,10 +36,27 @@
         "type": "github"
       }
     },
+    "nixpkgs-fork": {
+      "locked": {
+        "lastModified": 1692183250,
+        "narHash": "sha256-v/Ip6jrZgUaAnrw4SJYQIGc0lzhLivPczvQeFCi3vTg=",
+        "owner": "jvanbruegge",
+        "repo": "nixpkgs",
+        "rev": "c7723aa7fdec44173954d6f8df968409724eda1b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "jvanbruegge",
+        "ref": "isabelle-2023",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "home-manager": "home-manager",
-        "nixpkgs": "nixpkgs"
+        "nixpkgs": "nixpkgs",
+        "nixpkgs-fork": "nixpkgs-fork"
       }
     }
   },
