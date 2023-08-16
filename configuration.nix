@@ -32,6 +32,7 @@
       efi.canTouchEfiVariables = true;
     };
     plymouth.enable = true;
+    tmp.cleanOnBoot = false;
   };
 
   # home-manager config
@@ -41,7 +42,7 @@
   };
 
   # Fonts & Keyboard layout
-  fonts.fonts = with pkgs; [
+  fonts.packages = with pkgs; [
     dejavu_fonts
     (nerdfonts.override { fonts = [ "BitstreamVeraSansMono" ]; })
     ipafont
