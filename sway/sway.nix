@@ -14,7 +14,7 @@ in
   imports = [
     ./kanshi.nix
     ./waybar.nix
-    ./mako.nix
+    ./fnott.nix
   ];
 
   home.activation = {
