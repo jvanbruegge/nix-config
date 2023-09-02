@@ -13,9 +13,6 @@
       btop
       cabal-install
       cura
-      dhall
-      dhall-json
-      dhall-lsp-server
       discord
       dnsutils
       fd
