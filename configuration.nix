@@ -1,7 +1,6 @@
 { pkgs, ... }:
 {
     imports = [
-    ./email/default.nix
     ./software/default.nix
     ./development/default.nix
     ./sway/default.nix

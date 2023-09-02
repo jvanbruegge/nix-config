@@ -50,6 +50,7 @@
       speechd
       tealdeer
       texlive.combined.scheme-full
+      thunderbird
       traceroute
       tree
       unzip
@@ -72,6 +73,14 @@
         "video/mp4" = "mpv.desktop";
         "video/quicktime" = "mpv.desktop";
       };
+    };
+
+    xdg.desktopEntries.thunderbird = {
+      name = "Thunderbird";
+      exec = "thunderbird %U";
+      terminal = false;
+      categories = [ "Application" "Network" "Chat" "Email" ];
+      mimeType = [ "message/rfc822" "x-scheme-handler/mailto" "text/calendar" "text/x-vcard" ];
     };
   };
 }
