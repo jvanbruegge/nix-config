@@ -29,18 +29,20 @@ audible download -a "$asin" "$aax" --cover --cover-size 1215 --chapter -o "$dir"
 info=$(audible api -p response_groups="media,contributors,series,category_ladders" /1.0/library/"$asin" | jq '.item')
 
 chapter_txt="$dir/chapters.txt"
-series_info=$(echo "$info" | jq '.series | if (length > 0) then sort_by(.sequence | tonumber) | .[-1] else "" end')
+series_info=$(echo "$info" | jq '.series | if (length > 0) then sort_by(.sequence | if . != "" then tonumber else 0 end) | .[-1] else "" end')
 
-for f in "$dir"/*.voucher; do
+if ls "$dir" | grep -q '.voucher'; then
   echo "Preparing to decrypt aacx file"
-  key=$(jq -r '.content_license.license_response.key' < "$f")
-  iv=$(jq -r '.content_license.license_response.iv' < "$f")
+  key=$(jq -r '.content_license.license_response.key' < "$dir"/*.voucher)
+  iv=$(jq -r '.content_license.license_response.iv' < "$dir"/*.voucher)
   decrypt="-audible_key $key -audible_iv $iv"
-done
+fi
+set +u
 if [ -z "$key" ]; then
-  echo "Preparing to decrypt aac file"
+  echo "Preparing to decrypt aax file"
   decrypt="-activation_bytes $(audible activation-bytes)"
 fi
+set -u
 echo "$decrypt"
 
 # shellcheck disable=2086
@@ -65,9 +67,10 @@ series-part=$(echo "$series_info" | jq -r '.sequence')
 fi
 
 # Write chapter timestamps to txt
-jq -r '.content_metadata.chapter_info.chapters
-    | reduce .[] as $c ([]; if $c.chapters? then .+[$c | del(.chapters)]+[$c.chapters] else .+[$c] end)
-    | flatten
+jq -r 'def flat:
+  reduce .[] as $c ([]; if $c.chapters? then .+[$c | del(.chapters)]+[$c.chapters | flat] else .+[$c] end) | flatten;
+    .content_metadata.chapter_info.chapters
+    | flat
     | .[] |
 "[CHAPTER]
 TIMEBASE=1/1000
