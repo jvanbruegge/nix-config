@@ -119,7 +119,7 @@ in
       floating.border = 0;
 
       terminal = "${config.programs.alacritty.package}/bin/alacritty";
-      menu = "${pkgs.wofi}/bin/wofi --show drun | ${pkgs.findutils}/bin/xargs swaymsg exec --";
+      menu = "${pkgs.wofi}/bin/wofi --show drun | _JAVA_AWT_WM_NONREPARENTING=1 ${pkgs.findutils}/bin/xargs swaymsg exec --";
 
       input = {
         "*" = {
