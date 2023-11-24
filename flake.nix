@@ -10,23 +10,21 @@
     };
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, ... }: {
-    nixosConfigurations."Jan-Laptop" = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
-      specialArgs = inputs;
-      modules = [
-        ./configuration.nix
-        ./machines/laptop.nix
-        home-manager.nixosModule
-        {
-          networking.hostName = "Jan-Laptop";
-          boot.initrd.luks.devices = {
-            main = {
-              device = "/dev/nvme0n1p2";
-            };
-          };
-        }
-      ];
+  outputs = inputs@{ self, nixpkgs, home-manager, ... }:
+    let
+      mkMachine = hostName: machine: nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = inputs;
+        modules = [
+          ./configuration.nix
+          machine
+          home-manager.nixosModule
+        ];
+      };
+    in {
+      nixosConfigurations = {
+        "Jan-Laptop" = mkMachine "Jan-Laptop" ./machines/laptop.nix;
+        "hwlap0036-macs" = mkMachine "hwlap0036-macs" ./machines/university-laptop.nix;
+      };
     };
-  };
 }
