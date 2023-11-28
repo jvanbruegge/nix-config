@@ -15,6 +15,9 @@
   # Wi-fi
   networking.networkmanager.enable = true;
 
+  # Thunderbolt
+  services.hardware.bolt.enable = true;
+
   # Bluetooth
   hardware.bluetooth.enable = true;
   services.blueman.enable = true;
