@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 let
   monitors = {
-    laptop = "AU Optronics 0x1336 Unknown";
+    laptop = "eDP-1";
     home = {
       left = "Samsung Electric Company U28E590 HTPK602401";
       right = "Samsung Electric Company U28E590 HTPK602370";
