@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, hostName, ... }:
 {
     imports = [
     ./software/default.nix
@@ -46,6 +46,8 @@
     (nerdfonts.override { fonts = [ "BitstreamVeraSansMono" ]; })
     ipafont
   ];
+
+  networking.hostName = hostName;
 
   services.xserver.extraLayouts = {
     us_de = {
