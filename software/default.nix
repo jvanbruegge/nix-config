@@ -1,4 +1,4 @@
-{ pkgs, nixpkgs-fork, ... }:
+{ pkgs, ... }:
 {
   programs.adb.enable = true;
   programs.steam.enable = true;
@@ -18,7 +18,7 @@
       fd
       ffmpeg
       freecad
-      haskell.compiler.ghc94
+      haskell.compiler.ghc98
       gimp
       gnome.eog
       gnome.evince
@@ -31,7 +31,7 @@
       hunspellDicts.de_DE
       inkscape
       inotify-tools
-      (nixpkgs-fork.legacyPackages.x86_64-linux.isabelle.withComponents (p: [p.isabelle-linter]))
+      (isabelle.withComponents (p: [p.isabelle-linter]))
       jq
       kubectl
       libreoffice
