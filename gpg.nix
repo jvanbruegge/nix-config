@@ -3,8 +3,10 @@
 {
   services.udev.packages = with pkgs; [ yubikey-personalization ];
   services.pcscd.enable = true;
+  services.dbus.packages = [ pkgs.gcr ];
 
   home-manager.users.jan = { pkgs, lib, ... }: {
+    home.packages = [ pkgs.pinentry-gnome ];
     home.activation = {
       getGPGkey = lib.hm.dag.entryAfter ["writeBoundary"]
         ''
@@ -14,6 +16,7 @@
 
     services.gpg-agent = {
       enable = true;
+      pinentryFlavor = "gnome3";
     };
 
     programs.gpg = {
