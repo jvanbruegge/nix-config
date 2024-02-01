@@ -3,6 +3,8 @@
   services.fwupd.enable = true;
   services.printing.enable = true;
 
+  services.netbird.enable = true;
+
   virtualisation = {
     docker.enable = true;
     virtualbox.host.enable = true;
