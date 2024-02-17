@@ -13,7 +13,11 @@
   };
 
   # Wi-fi
-  networking.networkmanager.enable = true;
+  services.resolved.enable = true;
+  networking.networkmanager = {
+    enable = true;
+    dns = "systemd-resolved";
+  };
 
   # Thunderbolt
   services.hardware.bolt.enable = true;
