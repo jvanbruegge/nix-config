@@ -49,7 +49,7 @@
 
   networking.hostName = hostName;
 
-  services.xserver.extraLayouts = {
+  services.xserver.xkb.extraLayouts = {
     us_de = {
       description = "US layout with alt-gr umlauts";
       languages = [ "eng" ];
