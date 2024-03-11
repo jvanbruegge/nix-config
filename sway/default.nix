@@ -1,7 +1,5 @@
 { pkgs, ... }:
 {
-  programs.sway.enable = true;
-
   users.users.greeter = {
     group = "greeter";
     isSystemUser = true;
@@ -11,7 +9,9 @@
     enable = true;
     settings = {
       default_session = {
-        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd 'sh -c \"LIBSEAT_BACKEND=logind systemd-cat --identifier=sway sway\"'";
+        command = ''
+          ${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd "dbus-run-session sway"
+        '';
       };
     };
   };

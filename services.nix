@@ -15,8 +15,11 @@
   users.users.jan.extraGroups = [ "docker" "vboxusers" ];
   users.extraGroups.vboxusers.members = [ "jan" ];
 
+  services.gvfs.enable = true;
+
   xdg.portal = {
     enable = true;
+    config.common.default = [ "wlr" "gtk" ];
     extraPortals = with pkgs; [
       xdg-desktop-portal-wlr
       xdg-desktop-portal-gtk

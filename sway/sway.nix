@@ -96,7 +96,11 @@ in
 
   wayland.windowManager.sway = {
     enable = true;
-    wrapperFeatures.gtk = true;
+    wrapperFeatures = {
+      gtk = true;
+      base = true;
+    };
+    systemd.enable = true;
 
     extraSessionCommands =
       ''
@@ -109,6 +113,8 @@ in
 
     extraConfig = ''
       for_window [app_id="at.yrlf.wl_mirror"] fullscreen enable
+
+      exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP DISPLAY SWAYSOCK
     '';
 
     config = {
@@ -119,7 +125,7 @@ in
       floating.border = 0;
 
       terminal = "${config.programs.alacritty.package}/bin/alacritty";
-      menu = "${pkgs.wofi}/bin/wofi --show drun | _JAVA_AWT_WM_NONREPARENTING=1 ${pkgs.findutils}/bin/xargs swaymsg exec --";
+      menu = "${pkgs.wofi}/bin/wofi --show drun | ${pkgs.findutils}/bin/xargs swaymsg exec --";
 
       input = {
         "*" = {
