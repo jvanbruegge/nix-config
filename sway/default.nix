@@ -16,6 +16,8 @@
     };
   };
 
+  security.pam.services.swaylock = {};
+
   home-manager.users.jan = {
     imports = [ ./sway.nix ];
   };
