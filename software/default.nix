@@ -15,6 +15,7 @@
       cura
       discord
       dnsutils
+      element-desktop
       fd
       ffmpeg
       freecad
