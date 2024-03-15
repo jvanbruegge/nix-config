@@ -5,7 +5,7 @@ if [ -z "$(which ffmpeg)" ] || [ -z "$(which audible)" ] || [ -z "$(which jq)" ]
 fi
 
 if [[ -z "$1" && -z "$2" ]]; then
-    echo "Usage: ./convert.sh <ASIN> <outFile> [--aacx]"
+    echo "Usage: ./convert.sh <ASIN> <outFile> [--aax]"
     audible library list
     exit 1
 fi
@@ -18,10 +18,10 @@ asin="$1"
 dir=$(mktemp -d)
 echo "$dir"
 
-if [ "$ext" == "--aacx" ]; then
-  aax="--aaxc"
-else
+if [ "$ext" == "--aax" ]; then
   aax="--aax-fallback"
+else
+  aax="--aaxc"
 fi
 
 audible download -a "$asin" "$aax" --cover --cover-size 1215 --chapter -o "$dir"

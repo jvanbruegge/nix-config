@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 {
   programs.adb.enable = true;
   programs.steam.enable = true;
@@ -9,7 +9,14 @@
     ];
 
     home.packages = with pkgs; [
-      audible-cli
+      (audible-cli.overrideAttrs (_: {
+        src = pkgs.fetchFromGitHub {
+          owner = "mkb79";
+          repo = "audible-cli";
+          rev = "91b3f63bd35cba638f9a0179c6893a59ecff1d1a";
+          hash = "sha256-tgElDv+a4aWMjKoqWgoZWOkhW4naenIEF2JvXFqFcaI=";
+        };
+      }))
       btop
       cabal-install
       cura
