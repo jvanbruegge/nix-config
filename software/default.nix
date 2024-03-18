@@ -26,7 +26,7 @@
       fd
       ffmpeg
       freecad
-      haskell.compiler.ghc98
+      haskell.compiler.ghc96
       gimp
       gnome.eog
       gnome.evince
