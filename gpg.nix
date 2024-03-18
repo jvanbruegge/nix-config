@@ -6,7 +6,6 @@
   services.dbus.packages = [ pkgs.gcr ];
 
   home-manager.users.jan = { pkgs, lib, ... }: {
-    home.packages = [ pkgs.pinentry-gnome ];
     home.activation = {
       getGPGkey = lib.hm.dag.entryAfter ["writeBoundary"]
         ''
@@ -16,7 +15,7 @@
 
     services.gpg-agent = {
       enable = true;
-      pinentryFlavor = "gnome3";
+      pinentryPackage = pkgs.pinentry-gnome3;
     };
 
     programs.gpg = {
