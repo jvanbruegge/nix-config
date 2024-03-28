@@ -1,7 +1,8 @@
 { config, pkgs, ... }:
 let
   monitors = {
-    laptop = "eDP-1";
+    laptop = "AU Optronics 0x1336 Unknown";
+    uniLaptop = "Chimei Innolux Corporation 0x152E Unknown";
     home = {
       left = "Samsung Electric Company U28E590 HTPK602401";
       right = "Samsung Electric Company U28E590 HTPK602370";
@@ -41,6 +42,12 @@ in
           status = "enable";
         }
       ];
+
+      uni.outputs = [{
+        criteria = monitors.uniLaptop;
+        scale = 1.0;
+        status = "enable";
+      }];
     };
   };
 }
