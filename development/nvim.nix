@@ -4,7 +4,6 @@
   home.packages = with pkgs; [
     ripgrep
     bat
-    haskell.packages.ghc96.haskell-language-server
     nodePackages.typescript
     nodePackages.typescript-language-server
     ormolu
