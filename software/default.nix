@@ -9,14 +9,6 @@
     ];
 
     home.packages = with pkgs; [
-      (audible-cli.overrideAttrs (_: {
-        src = pkgs.fetchFromGitHub {
-          owner = "mkb79";
-          repo = "audible-cli";
-          rev = "91b3f63bd35cba638f9a0179c6893a59ecff1d1a";
-          hash = "sha256-tgElDv+a4aWMjKoqWgoZWOkhW4naenIEF2JvXFqFcaI=";
-        };
-      }))
       btop
       cabal-install
       cura
@@ -26,6 +18,7 @@
       fd
       ffmpeg
       freecad
+      gedit
       haskell.compiler.ghc98
       haskell.packages.ghc98.haskell-language-server
       gimp
