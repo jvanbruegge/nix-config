@@ -4,16 +4,35 @@ if [ -z "$(which ffmpeg)" ] || [ -z "$(which audible)" ] || [ -z "$(which jq)" ]
     echo "Error: Needs ffmpeg, audible-cli and jq installed"
 fi
 
-if [[ -z "$1" && -z "$2" ]]; then
-    echo "Usage: ./convert.sh <ASIN> <outFile> [--aax]"
-    audible library list
+if [[ "$1" == "--profile" ]]; then
+  asin="$3"
+  outFile="$4"
+  ext="$5"
+  cmd="audible --profile $2"
+
+  if [[ -z "$2" || -z "$3" || -z "$4" ]]; then
+    echo "Usage: ./convert.sh [--profile <name>] <ASIN> <outFile> [--aax]"
+    if [[ -z "$2" ]]; then
+      audible library list
+    else
+      $cmd library list
+    fi
     exit 1
+  fi
+else
+  asin="$1"
+  outFile="$2"
+  ext="$3"
+  cmd="audible"
+
+  if [[ -z "$1" || -z "$2" ]]; then
+    echo "Usage: ./convert.sh [--profile <name>] <ASIN> <outFile> [--aax]"
+    $cmd library list
+    exit 1
+  fi
 fi
 
-ext="$3"
 set -euo pipefail
-
-asin="$1"
 
 dir=$(mktemp -d)
 echo "$dir"
@@ -24,9 +43,9 @@ else
   aax="--aaxc"
 fi
 
-audible download -a "$asin" "$aax" --cover --cover-size 1215 --chapter -o "$dir"
+$cmd download -a "$asin" "$aax" --cover --cover-size 1215 --chapter -o "$dir"
 
-info=$(audible api -p response_groups="media,contributors,series,category_ladders" /1.0/library/"$asin" | jq '.item')
+info=$($cmd api -p response_groups="media,contributors,series,category_ladders" /1.0/library/"$asin" | jq '.item')
 
 chapter_txt="$dir/chapters.txt"
 series_info=$(echo "$info" | jq '.series | if (length > 0) then sort_by(.sequence | if . != "" then tonumber else 0 end) | .[-1] else "" end')
@@ -40,7 +59,7 @@ fi
 set +u
 if [ -z "$key" ]; then
   echo "Preparing to decrypt aax file"
-  decrypt="-activation_bytes $(audible activation-bytes)"
+  decrypt="-activation_bytes $($cmd activation-bytes)"
 fi
 set -u
 echo "$decrypt"
@@ -90,6 +109,6 @@ ffmpeg $decrypt \
     -disposition:v attached_pic -movflags +faststart -movflags +use_metadata_tags \
     -metadata:s:v title="Album cover" -metadata:s:v comment="Cover (front)" \
     -metadata:s:a language="$(echo "$info" | jq -r '.language.[0:3]')" \
-    "$2"
+    "$outFile"
 
 rm -r "$dir"
