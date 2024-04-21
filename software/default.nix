@@ -9,6 +9,7 @@
     ];
 
     home.packages = with pkgs; [
+      audible-cli
       btop
       cabal-install
       cura
