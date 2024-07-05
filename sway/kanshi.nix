@@ -13,41 +13,46 @@ in
   services.kanshi = {
     enable = true;
 
-    profiles = {
-      home.outputs = [
-        {
-          criteria = monitors.home.left;
-          mode = "3840x2160@60Hz";
-          position = "0,0";
-          scale = 1.5;
-          status = "enable";
-        }
-        {
-          criteria = monitors.home.right;
-          mode = "1920x1080@60Hz";
-          position = "2560,0";
-          scale = 1.0;
-          status = "enable";
-        }
-        {
-          criteria = "eDP-1";
-          status = "disable";
-        }
-      ];
-
-      mobile.outputs = [
-        {
+    settings = [
+      {
+        profile.name = "home";
+        profile.outputs = [
+          {
+            criteria = monitors.home.left;
+            mode = "3840x2160@60Hz";
+            position = "0,0";
+            scale = 1.5;
+            status = "enable";
+          }
+          {
+            criteria = monitors.home.right;
+            mode = "1920x1080@60Hz";
+            position = "2560,0";
+            scale = 1.0;
+            status = "enable";
+          }
+          {
+            criteria = "eDP-1";
+            status = "disable";
+          }
+        ];
+      }
+      {
+        profile.name = "mobile";
+        profile.outputs = [ {
           criteria = monitors.laptop;
           scale = 1.5;
           status = "enable";
-        }
-      ];
-
-      uni.outputs = [{
-        criteria = monitors.uniLaptop;
-        scale = 1.0;
-        status = "enable";
-      }];
-    };
+        } ];
+      }
+      {
+        profile.name = "uni";
+        profile.outputs =  [ {
+          criteria = monitors.uniLaptop;
+          scale = 1.0;
+          status = "enable";
+        } ];
+      }
+    ];
   };
 }

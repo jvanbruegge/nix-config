@@ -23,11 +23,11 @@
       haskell.compiler.ghc98
       haskell.packages.ghc98.haskell-language-server
       gimp
-      gnome.eog
-      gnome.evince
-      gnome.file-roller
-      gnome.nautilus
-      gnome.adwaita-icon-theme
+      eog
+      evince
+      file-roller
+      nautilus
+      adwaita-icon-theme
       gnumake
       google-chrome
       hexyl
