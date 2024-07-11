@@ -1,4 +1,4 @@
-{ pkgs, lib, isabelle, ... }:
+{ pkgs, lib, ... }:
 {
   programs.adb.enable = true;
   programs.steam.enable = true;
@@ -34,7 +34,7 @@
       hunspellDicts.de_DE
       inkscape
       inotify-tools
-      (isabelle.legacyPackages.x86_64-linux.isabelle.withComponents (p: [p.isabelle-linter]))
+      (isabelle.withComponents (p: [p.isabelle-linter]))
       jq
       kubectl
       libreoffice
