@@ -12,13 +12,11 @@
       audible-cli
       btop
       cabal-install
-      cura
       discord
       dnsutils
       element-desktop
       fd
       ffmpeg
-      freecad
       gedit
       haskell.compiler.ghc98
       haskell.packages.ghc98.haskell-language-server
