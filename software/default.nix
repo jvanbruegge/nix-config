@@ -36,6 +36,7 @@
       jq
       kubectl
       libreoffice
+      mercurial
       mpv
       nodePackages.browser-sync
       nodePackages.npm-check-updates
