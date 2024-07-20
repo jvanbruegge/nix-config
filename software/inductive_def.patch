@@ -1,0 +1,65 @@
+diff -r 29f2b8ff84f3 src/HOL/Tools/inductive.ML
+--- a/src/HOL/Tools/inductive.ML	Mon May 20 15:43:51 2024 +0200
++++ b/src/HOL/Tools/inductive.ML	Sat Jul 20 13:05:10 2024 +0100
+@@ -21,7 +21,7 @@
+ signature INDUCTIVE =
+ sig
+   type result =
+-    {preds: term list, elims: thm list, raw_induct: thm,
++    {preds: term list, elims: thm list, raw_induct: thm, def: thm, mono: thm,
+      induct: thm, inducts: thm list, intrs: thm list, eqs: thm list}
+   val transform_result: morphism -> result -> result
+   type info = {names: string list, coind: bool} * result
+@@ -180,17 +180,18 @@
+ (** context data **)
+ 
+ type result =
+-  {preds: term list, elims: thm list, raw_induct: thm,
++  {preds: term list, elims: thm list, raw_induct: thm, def: thm, mono: thm,
+    induct: thm, inducts: thm list, intrs: thm list, eqs: thm list};
+ 
+-fun transform_result phi {preds, elims, raw_induct: thm, induct, inducts, intrs, eqs} =
++fun transform_result phi {preds, elims, raw_induct: thm, induct, inducts, intrs, eqs, def, mono} =
+   let
+     val term = Morphism.term phi;
+     val thm = Morphism.thm phi;
+     val fact = Morphism.fact phi;
+   in
+-   {preds = map term preds, elims = fact elims, raw_induct = thm raw_induct,
+-    induct = thm induct, inducts = fact inducts, intrs = fact intrs, eqs = fact eqs}
++   {preds = map term preds, elims = fact elims, raw_induct = thm raw_induct, def = thm def,
++    induct = thm induct, inducts = fact inducts, intrs = fact intrs, eqs = fact eqs,
++    mono = thm mono}
+   end;
+ 
+ type info = {names: string list, coind: bool} * result;
+@@ -1151,6 +1152,8 @@
+        raw_induct = rulify lthy3 raw_induct,
+        induct = induct,
+        inducts = inducts,
++       def = fp_def,
++       mono = mono,
+        eqs = eqs'};
+ 
+     val lthy4 = lthy3
+diff -r 29f2b8ff84f3 src/HOL/Tools/inductive_set.ML
+--- a/src/HOL/Tools/inductive_set.ML	Mon May 20 15:43:51 2024 +0200
++++ b/src/HOL/Tools/inductive_set.ML	Sat Jul 20 13:05:10 2024 +0100
+@@ -468,7 +468,7 @@
+         eta_contract (member op = cs' orf is_pred pred_arities))) intros;
+     val cnames_syn' = map (fn (b, _) => (Binding.suffix_name "p" b, NoSyn)) cnames_syn;
+     val monos' = map (to_pred [] (Context.Proof lthy)) monos;
+-    val ({preds, intrs, elims, raw_induct, eqs, ...}, lthy1) =
++    val ({preds, intrs, elims, raw_induct, eqs, def, mono, ...}, lthy1) =
+       Inductive.add_ind_def
+         {quiet_mode = quiet_mode, verbose = verbose, alt_name = Binding.empty,
+           coind = coind, no_elim = no_elim, no_ind = no_ind, skip_mono = skip_mono}
+@@ -518,7 +518,7 @@
+         (map (to_set [] (Context.Proof lthy3)) eqs) raw_induct' lthy3;
+   in
+     ({intrs = intrs', elims = elims', induct = induct, inducts = inducts,
+-      raw_induct = raw_induct', preds = map fst defs, eqs = eqs'},
++      raw_induct = raw_induct', preds = map fst defs, eqs = eqs', def = def, mono = mono},
+      lthy4)
+   end;
+ 

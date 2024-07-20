@@ -32,7 +32,9 @@
       hunspellDicts.de_DE
       inkscape
       inotify-tools
-      (isabelle.withComponents (p: [p.isabelle-linter]))
+      ((isabelle.overrideAttrs (_: {
+        patches = [ ./inductive_def.patch ];
+      })).withComponents (p: [p.isabelle-linter]))
       jq
       kubectl
       libreoffice
