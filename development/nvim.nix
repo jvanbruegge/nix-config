@@ -84,15 +84,27 @@
         type = "lua";
         config = ''
           local telescope = require('telescope')
+          local find_cmd = { 'rg', '--files', '--hidden', '--glob', '!**/.git' }
 
-          telescope.setup({})
+          telescope.setup({
+            pickers = {
+              find_files = {
+                find_command = find_cmd,
+              },
+            },
+          })
           telescope.load_extension('fzf')
 
           local builtin = require('telescope.builtin')
+          local actions = require('telescope.actions')
           vim.keymap.set('n', '<leader>o', builtin.find_files)
           vim.keymap.set('n', '<leader>t', function()
-            vim.cmd.tabnew()
-            builtin.find_files()
+            builtin.find_files({
+              attach_mappings = function(_, map)
+                map({ 'i', 'n' }, '<CR>', actions.select_tab)
+                return true
+              end,
+            })
           end)
         '';
       }
