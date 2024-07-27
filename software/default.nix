@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ ... }:
 {
   programs.adb.enable = true;
   programs.steam.enable = true;

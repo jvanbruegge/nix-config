@@ -125,7 +125,7 @@ in
       window.border = 0;
       floating.border = 0;
 
-      terminal = "${config.programs.alacritty.package}/bin/alacritty";
+      terminal = lib.getExe config.programs.kitty.package;
       menu = "${pkgs.wofi}/bin/wofi --show drun | ${pkgs.findutils}/bin/xargs swaymsg exec --";
 
       input = {

@@ -1,44 +1,23 @@
-{ config, pkgs, ... }:
-
-{
-  programs.alacritty = {
+{ config, pkgs, lib, ... }:
+let
+  tokyonight = pkgs.fetchurl {
+    url = "https://raw.githubusercontent.com/folke/tokyonight.nvim/b0e7c7382a7e8f6456f2a95655983993ffda745e/extras/kitty/tokyonight_moon.conf";
+    hash = "sha256-aQ38HtUnKq2wH4zM9sskHA2aWIDydW6C1DGC1DlMDeU=";
+  };
+in {
+  programs.kitty = {
     enable = true;
-    settings = {
-      font = {
-        normal = {
-          family = "BitstromWera Nerd Font";
-          style = "Regular";
-        };
-        size = 11;
-      };
 
-      # Solarized Dark (https://github.com/eendroroy/alacritty-theme/blob/master/themes/solarized_dark.yaml)
-      colors = {
-        primary = {
-          background = "0x002b36";
-          foreground = "0x839496";
-        };
-        normal = {
-          black = "0x073642";
-          red = "0xdc322f";
-          green = "0x859900";
-          yellow = "0xb58900";
-          blue = "0x268bd2";
-          magenta = "0xd33682";
-          cyan = "0x2aa198";
-          white = "0xeee8d5";
-        };
-        bright = {
-          black = "0x002b36";
-          red = "0xcb4b16";
-          green = "0x586e75";
-          yellow = "0x657b83";
-          blue = "0x839496";
-          magenta = "0x6c71c4";
-          cyan = "0x93a1a1";
-          white = "0xfdf6e3";
-        };
-      };
+    font = {
+      name = "BitstromWera Nerd Font";
+      size = 11;
+    };
+
+    settings = {
+      include = builtins.toString tokyonight;
+      scrollback_lines = 10000;
+      enable_audio_bell = "no";
+      close_on_child_death = "yes";
     };
   };
 }
