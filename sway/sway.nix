@@ -114,6 +114,7 @@ in
 
     extraConfig = ''
       for_window [app_id="at.yrlf.wl_mirror"] fullscreen enable
+      for_window [title="Identity Chooser – Mozilla Thunderbird"] floating enable
 
       exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP DISPLAY SWAYSOCK
     '';
