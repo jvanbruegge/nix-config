@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
 {
   home.packages = with pkgs; [
@@ -218,58 +218,6 @@
         '';
       }
       trouble-nvim
-      { plugin = nvim-lspconfig;
-        type = "lua";
-        config = ''
-          local lspconfig = require('lspconfig')
-          local trouble = require('trouble')
-
-          local capabilities = vim.lsp.protocol.make_client_capabilities()
-          capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
-
-          local on_attach = function(client, bufnr)
-            local opts = { buffer = bufnr }
-            vim.keymap.set('n', '<c-i>', vim.lsp.buf.format, opts)
-            vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
-            vim.keymap.set('n', '<leader>h', vim.lsp.buf.hover, opts)
-            vim.keymap.set('n', '<leader>r', builtin.lsp_references, opts)
-            vim.keymap.set('n', '<leader>q', vim.lsp.buf.code_action, opts)
-
-            vim.keymap.set('n', '<leader>d', function()
-              trouble.toggle('diagnostics')
-            end, opts)
-
-            if client.server_capabilities.inlayHintProvider then
-              vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
-            end
-          end
-
-          local servers = { 'rust_analyzer', 'bashls', 'tsserver' }
-          for _, lsp in ipairs(servers) do
-            lspconfig[lsp].setup({
-              on_attach = on_attach,
-              capabilities = capabilities,
-            })
-          end
-
-          lspconfig.hls.setup({
-            filetypes = { 'haskell', 'lhaskell', 'cabal' },
-            capabilities = capabilities,
-            on_attach = on_attach,
-          })
-          lspconfig.nixd.setup({
-            capabilities = capabilities,
-            on_attach = on_attach,
-            settings = {
-              nixd = {
-                diagnostic = {
-                  suppress = { 'sema-escaping-with' },
-                },
-              },
-            },
-          })
-        '';
-      }
       { plugin = fidget-nvim;
         type = "lua";
         config = ''
@@ -304,6 +252,90 @@
           local whitespace = require('whitespace-nvim')
           whitespace.setup()
           vim.keymap.set('n', 'tr', whitespace.trim)
+        '';
+      }
+      { plugin = pkgs.vimUtils.buildVimPlugin rec {
+          pname = "isabelle-syn.nvim";
+          version = "2024-05-15";
+          src = pkgs.fetchFromGitHub {
+            owner = "Treeniks";
+            repo = pname;
+            rev = "114b06dc34edf1707be7249b5a3815733e68d4c9";
+            hash = "sha256-f04jyExUwos9w89IeKbRdRMtWIsQYe0McAUoijq7mCA=";
+          };
+        };
+      }
+      { plugin = pkgs.vimUtils.buildVimPlugin rec {
+          pname = "isabelle-lsp.nvim";
+          version = "2024-07-20";
+          src = pkgs.fetchFromGitHub {
+            owner = "Treeniks";
+            repo = pname;
+            rev = "206cca02a9b95925f362cea35b1fba2a24dff37b";
+            hash = "sha256-mbiUvthEQHQvmNGZtFccasiQ0ksFP0XpZzzK79m14UU=";
+          };
+          postUnpack = ''
+            substituteInPlace source/lua/isabelle-lsp.lua \
+              --replace-fail "~/Documents/isabelle/isabelle-lsp.log'," "~/.local/state/isabelle-lsp.log', '-l', 'Prelim'"
+          '';
+        };
+        type = "lua";
+        config = ''
+          require('isabelle-lsp').setup({})
+        '';
+      }
+      { plugin = nvim-lspconfig;
+        type = "lua";
+        config = ''
+          local lspconfig = require('lspconfig')
+          local trouble = require('trouble')
+
+          local capabilities = vim.lsp.protocol.make_client_capabilities()
+          capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
+
+          local on_attach = function(client, bufnr)
+            local opts = { buffer = bufnr }
+            vim.keymap.set('n', '<c-i>', vim.lsp.buf.format, opts)
+            vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+            vim.keymap.set('n', '<leader>h', vim.lsp.buf.hover, opts)
+            vim.keymap.set('n', '<leader>r', builtin.lsp_references, opts)
+            vim.keymap.set('n', '<leader>q', vim.lsp.buf.code_action, opts)
+
+            vim.keymap.set('n', '<leader>d', function()
+              trouble.toggle('diagnostics')
+            end, opts)
+
+            if client.server_capabilities.inlayHintProvider then
+              vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+            end
+          end
+
+          local servers = { 'rust_analyzer', 'bashls', 'tsserver' }
+          for _, lsp in ipairs(servers) do
+            lspconfig[lsp].setup({
+              on_attach = on_attach,
+              capabilities = capabilities,
+            })
+          end
+
+          lspconfig.isabelle.setup({})
+
+          lspconfig.hls.setup({
+            filetypes = { 'haskell', 'lhaskell', 'cabal' },
+            capabilities = capabilities,
+            on_attach = on_attach,
+          })
+          lspconfig.nixd.setup({
+            capabilities = capabilities,
+            on_attach = on_attach,
+            settings = {
+              nixd = {
+                diagnostic = {
+                  suppress = { 'sema-escaping-with' },
+                },
+              },
+            },
+          })
         '';
       }
     ];

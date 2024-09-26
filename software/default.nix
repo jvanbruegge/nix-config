@@ -3,7 +3,15 @@
   programs.adb.enable = true;
   programs.steam.enable = true;
 
-  home-manager.users.jan = { pkgs, ... }: {
+  home-manager.users.jan = { pkgs, ... }:
+  let
+    isabelle-language-server = pkgs.fetchFromGitHub {
+      owner = "Treeniks";
+      repo = "isabelle-language-server";
+      rev = "5453ad2f677ba646096a66c22f0bad6ee0de9381";
+      hash = "sha256-TgIo5Y1TFa0PPVv2QmBRCKFoYU3tjNNw+7MuN+vc+Zg=";
+    };
+  in {
     imports = [
       ./firefox.nix
     ];
@@ -33,6 +41,12 @@
       inkscape
       inotify-tools
       ((isabelle.overrideAttrs (_: {
+        prePatch = ''
+          rm -r src
+          cp -r ${isabelle-language-server}/src src
+          cp ${isabelle-language-server}/etc/build.props etc/
+          chmod -R +w src etc/build.props
+        '';
         patches = [ ./inductive_def.patch ];
       })).withComponents (p: [p.isabelle-linter]))
       jq
