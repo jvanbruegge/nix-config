@@ -49,6 +49,12 @@
       -- Navigate tabs
       vim.keymap.set('n', 'J', vim.cmd.tabp)
       vim.keymap.set('n', 'K', vim.cmd.tabn)
+
+      -- Splits
+      vim.o.splitright = true
+      vim.keymap.set('n', '<C-3>', vim.cmd.vsplit)
+      vim.keymap.set('n', 'A', '<C-W>h')
+      vim.keymap.set('n', 'D', '<C-W>l')
     '';
 
     plugins = with pkgs.vimPlugins; [
