@@ -316,7 +316,7 @@
             end
           end
 
-          local servers = { 'rust_analyzer', 'bashls', 'tsserver' }
+          local servers = { 'rust_analyzer', 'bashls', 'ts_ls' }
           for _, lsp in ipairs(servers) do
             lspconfig[lsp].setup({
               on_attach = on_attach,
