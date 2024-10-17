@@ -73,7 +73,7 @@
       tree
       unzip
       usbutils
-      vagrant
+      (vagrant.override { withLibvirt = false; })
       vlc
       xournalpp
       zip
