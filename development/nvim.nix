@@ -127,23 +127,6 @@
           })
         '';
       }
-      { plugin = pkgs.vimUtils.buildVimPlugin rec {
-          pname = "markdown.nvim";
-          version = "2024-07-27";
-          src = pkgs.fetchFromGitHub {
-            owner = "MeanderingProgrammer";
-            repo = pname;
-            rev = "v4.1.0";
-            hash = "sha256-DohaHVIEPCO+xO4VfsHBpocWzDCM9C5NN2sU/lUajK0=";
-          };
-        };
-        type = "lua";
-        config = ''
-          require('render-markdown').setup({
-            latex = { enabled = false },
-          })
-        '';
-      }
       cmp-nvim-lsp
       cmp-buffer
       cmp-path
