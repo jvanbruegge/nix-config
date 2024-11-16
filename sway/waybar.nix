@@ -41,10 +41,14 @@ in
       modules-left = [ "sway/workspaces" "sway/mode" "sway/window" ];
       modules-center = [ "clock" ];
       modules-right = [ "custom/keyboard" "tray" "network" "pulseaudio" "battery" ];
-      height = 22;
+      height = 24;
       modules = {
         "sway/window" = {
           max-length = 50;
+        };
+        tray = {
+          show-passive-items = true;
+          icon-size = 20;
         };
         battery = {
           bat = "BAT0";
@@ -67,7 +71,7 @@ in
           format-source-muted = "- ";
         };
         "custom/keyboard" = {
-          exec = "/usr/bin/env bash -c \"${cmd}\"";
+          exec = "${pkgs.bash}/bin/bash -c \"${cmd}\"";
           format = "Visible: {}";
           on-click = "$HOME/.config/waybar/toggle-keyboard.sh";
         };
