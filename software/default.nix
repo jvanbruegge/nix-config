@@ -61,6 +61,7 @@
       openssl
       pdftk
       pre-commit
+      qbittorrent
       qrencode
       shellcheck
       signal-desktop
