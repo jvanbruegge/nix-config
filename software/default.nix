@@ -60,6 +60,7 @@
       openjdk17
       openssl
       pdftk
+      picard
       pre-commit
       qbittorrent
       qrencode
