@@ -46,6 +46,8 @@
           cp -r ${isabelle-language-server}/src src
           cp ${isabelle-language-server}/etc/build.props etc/
           chmod -R +w src etc/build.props
+
+          sed -i 's/Dont_Inline/Hardly_Inline/' src/HOL/Tools/BNF/bnf_lift.ML
         '';
         patches = [ ./inductive_def.patch ];
       })).withComponents (p: [p.isabelle-linter]))
