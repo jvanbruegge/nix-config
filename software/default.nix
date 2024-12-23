@@ -3,7 +3,7 @@
   programs.adb.enable = true;
   programs.steam.enable = true;
 
-  home-manager.users.jan = { pkgs, ... }:
+  home-manager.users.jan = { pkgs, lib, ... }:
   let
     isabelle-language-server = pkgs.fetchFromGitHub {
       owner = "Treeniks";
@@ -17,6 +17,7 @@
     ];
 
     home.packages = with pkgs; [
+      (import ./jellyflix.nix { inherit pkgs lib; })
       audible-cli
       btop
       cabal-install
@@ -80,6 +81,7 @@
       (vagrant.override { withLibvirt = false; })
       vlc
       xournalpp
+      yt-dlp
       zip
     ];
 

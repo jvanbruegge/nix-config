@@ -43,7 +43,7 @@
   # Fonts & Keyboard layout
   fonts.packages = with pkgs; [
     dejavu_fonts
-    (nerdfonts.override { fonts = [ "BitstreamVeraSansMono" ]; })
+    nerd-fonts.bitstream-vera-sans-mono
     ipafont
   ];
 

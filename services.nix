@@ -16,6 +16,7 @@
   users.extraGroups.vboxusers.members = [ "jan" ];
 
   services.gvfs.enable = true;
+  services.gnome.gnome-keyring.enable = true;
 
   xdg.portal = {
     enable = true;
