@@ -57,6 +57,7 @@
       libreoffice
       mercurial
       mpv
+      nixpkgs-review
       nodePackages.browser-sync
       nodePackages.npm-check-updates
       nodePackages.prettier
