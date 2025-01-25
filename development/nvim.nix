@@ -254,7 +254,7 @@
           };
         };
       }
-      { plugin = pkgs.vimUtils.buildVimPlugin rec {
+      /*{ plugin = pkgs.vimUtils.buildVimPlugin rec {
           pname = "isabelle-lsp.nvim";
           version = "2024-07-20";
           src = pkgs.fetchFromGitHub {
@@ -272,7 +272,7 @@
         config = ''
           require('isabelle-lsp').setup({})
         '';
-      }
+      }*/
       { plugin = nvim-lspconfig;
         type = "lua";
         config = ''
@@ -307,7 +307,7 @@
             })
           end
 
-          lspconfig.isabelle.setup({})
+          -- lspconfig.isabelle.setup({})
 
           lspconfig.hls.setup({
             filetypes = { 'haskell', 'lhaskell', 'cabal' },
