@@ -18,7 +18,7 @@
         modules = [
           ./configuration.nix
           machine
-          home-manager.nixosModule
+          home-manager.nixosModules.default
         ];
       };
     in {
