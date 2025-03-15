@@ -9,7 +9,6 @@
     ];
 
     home.packages = with pkgs; [
-      (import ./jellyflix.nix { inherit pkgs lib; })
       audible-cli
       btop
       cabal-install
@@ -35,6 +34,7 @@
       inotify-tools
       (isabelle.legacyPackages.x86_64-linux.isabelle /* .withComponents (p: [p.isabelle-linter]) */)
       jq
+      jellyflix
       kubectl
       libreoffice
       mercurial
