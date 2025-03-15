@@ -34,6 +34,11 @@
     tmp.cleanOnBoot = false;
   };
 
+  swapDevices = [{
+    device = "/var/lib/swapfile";
+    size = 16 * 1024;
+  }];
+
   # home-manager config
   home-manager = {
     useGlobalPkgs = true;
