@@ -32,7 +32,7 @@
       hunspellDicts.de_DE
       inkscape
       inotify-tools
-      (isabelle.legacyPackages.x86_64-linux.isabelle /* .withComponents (p: [p.isabelle-linter]) */)
+      (isabelle.legacyPackages.x86_64-linux.isabelle.withComponents (p: [p.isabelle-linter]))
       jq
       jellyflix
       kubectl
