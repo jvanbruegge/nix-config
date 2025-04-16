@@ -3,10 +3,7 @@
   services.fwupd.enable = true;
   services.printing.enable = true;
 
-  services.netbird = {
-    enable = true;
-    tunnels.wt0.port = 51821;
-  };
+  services.netbird.enable = true;
 
   virtualisation = {
     docker.enable = true;

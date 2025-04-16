@@ -21,6 +21,13 @@
   nix = {
     nixPath = [ "nixpkgs=${pkgs.path}" ];
     extraOptions = "experimental-features = nix-command flakes";
+    distributedBuilds = true;
+    buildMachines = [ {
+      hostName = "minecraft";
+      system = "aarch64-linux";
+      sshUser = "ubuntu";
+      sshKey = "/root/.ssh/minecraft_ed25519";
+    } ];
   };
   nixpkgs.config.allowUnfree = true;
 

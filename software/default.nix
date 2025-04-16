@@ -25,6 +25,7 @@
       evince
       file-roller
       nautilus
+      netbird
       adwaita-icon-theme
       gnumake
       google-chrome
