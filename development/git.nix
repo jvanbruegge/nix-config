@@ -21,15 +21,14 @@
 
       a = "add";
       b = "branch";
-      d = "diff";
-      dc = "diff --cached";
+      d = "diff --word-diff";
+      dc = "diff --cached --word-diff";
       s = "status";
 
       st = "stash";
       stp = "stash pop";
 
       p = "push";
-      pso = "push --set-upstream origin HEAD";
       pu = "pull";
 
       f = "fetch";
@@ -42,10 +41,34 @@
     extraConfig = {
       merge.ff = false;
       pull.ff = "only";
+      push = {
+        autoSetupRemote = true;
+        followTags = true;
+      };
+      fetch = {
+        prune = true;
+        pruneTags = true;
+        all = true;
+      };
+      rerere = {
+        enabled = true;
+        autoupdate = true;
+      };
       core.pager = "less -F -X";
       commit.gpgSign = true;
-      tag.gpgSign = true;
+      tag = {
+        gpgSign = true;
+        sort = "version:refname";
+      };
+      diff = {
+        algorithm = "histogram";
+        colorMoved = "plain";
+        renames = true;
+        mnemonicPrefix = true;
+      };
       init.defaultBranch = "master";
+      branch.sort = "-committerdate";
+      column.ui = "auto";
     };
   };
 }
