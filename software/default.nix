@@ -1,4 +1,4 @@
-{ isabelle, ... }:
+{ ... }:
 {
   programs.adb.enable = true;
   programs.steam.enable = true;
@@ -33,7 +33,7 @@
       hunspellDicts.de_DE
       inkscape
       inotify-tools
-      (isabelle.legacyPackages.x86_64-linux.isabelle.withComponents (p: [(p.isabelle-linter.overrideAttrs (_: {
+      (isabelle.withComponents (p: [(p.isabelle-linter.overrideAttrs (_: {
         src = pkgs.fetchFromGitHub {
           owner = "isabelle-prover";
           repo = "isabelle-linter";
