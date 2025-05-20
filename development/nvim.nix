@@ -243,6 +243,7 @@
           vim.keymap.set('n', 'tr', whitespace.trim)
         '';
       }
+      aw-watcher-nvim
       { plugin = pkgs.vimUtils.buildVimPlugin rec {
           pname = "isabelle-syn.nvim";
           version = "2024-05-15";
