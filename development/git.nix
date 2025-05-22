@@ -21,8 +21,8 @@
 
       a = "add";
       b = "branch";
-      d = "diff --word-diff";
-      dc = "diff --cached --word-diff";
+      d = "diff --word-diff=color";
+      dc = "diff --cached --word-diff=color";
       s = "status";
 
       st = "stash";
