@@ -19,8 +19,8 @@
       fd
       ffmpeg
       gedit
-      haskell.compiler.ghc98
-      haskell.packages.ghc98.haskell-language-server
+      haskell.compiler.ghc912
+      haskell.packages.ghc912.haskell-language-server
       gimp
       eog
       evince

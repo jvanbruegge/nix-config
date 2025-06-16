@@ -288,11 +288,13 @@
             vim.keymap.set('n', '<c-i>', vim.lsp.buf.format, opts)
             vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
             vim.keymap.set('n', '<leader>h', vim.lsp.buf.hover, opts)
-            vim.keymap.set('n', '<leader>r', builtin.lsp_references, opts)
             vim.keymap.set('n', '<leader>q', vim.lsp.buf.code_action, opts)
 
             vim.keymap.set('n', '<leader>d', function()
               trouble.toggle('diagnostics')
+            end, opts)
+            vim.keymap.set('n', '<leader>r', function()
+              trouble.toggle('lsp_references')
             end, opts)
 
             if client.server_capabilities.inlayHintProvider then
