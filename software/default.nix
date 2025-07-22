@@ -70,7 +70,6 @@
       tree
       unzip
       usbutils
-      (vagrant.override { withLibvirt = false; })
       vlc
       xournalpp
       yt-dlp
