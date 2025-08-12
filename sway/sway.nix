@@ -134,6 +134,7 @@ in
           xkb_options = "caps:escape";
           xkb_layout = "us_de";
           tap = "enabled";
+          drag_lock = "disabled";
         };
       };
 
