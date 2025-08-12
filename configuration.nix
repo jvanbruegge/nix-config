@@ -17,6 +17,8 @@
     home.stateVersion = "21.05";
   };
 
+  services.printing.drivers = [ pkgs.hplip ];
+
   # Options for nix
   nix = {
     nixPath = [ "nixpkgs=${pkgs.path}" ];
