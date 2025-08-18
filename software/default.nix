@@ -18,6 +18,7 @@
       element-desktop
       fd
       ffmpeg
+      freecad
       gedit
       haskell.compiler.ghc912
       haskell.packages.ghc912.haskell-language-server
