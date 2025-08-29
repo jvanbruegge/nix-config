@@ -15,7 +15,6 @@
       cabal-install
       discord
       dnsutils
-      element-desktop
       fd
       ffmpeg
       freecad

@@ -243,7 +243,13 @@
           vim.keymap.set('n', 'tr', whitespace.trim)
         '';
       }
-      aw-watcher-nvim
+      { plugin = aw-watcher-nvim;
+        type = "lua";
+        config = ''
+          local watcher = require('aw_watcher')
+          watcher.setup({})
+        '';
+      }
       { plugin = pkgs.vimUtils.buildVimPlugin rec {
           pname = "isabelle-syn.nvim";
           version = "2024-05-15";
