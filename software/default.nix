@@ -73,6 +73,7 @@
       vlc
       xournalpp
       yt-dlp
+      zbar
       zip
     ];
 
