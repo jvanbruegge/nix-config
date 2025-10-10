@@ -55,6 +55,9 @@
       vim.keymap.set('n', '<C-3>', vim.cmd.vsplit)
       vim.keymap.set('n', 'A', '<C-W>h')
       vim.keymap.set('n', 'D', '<C-W>l')
+
+      -- Show file in window title
+      vim.opt.title = true
     '';
 
     plugins = with pkgs.vimPlugins; [
