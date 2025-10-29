@@ -43,7 +43,7 @@
         };
       }))]))
       jq
-      jellyflix
+      #jellyflix
       kubectl
       libreoffice
       mercurial
@@ -64,7 +64,7 @@
       squeekboard
       speechd
       tealdeer
-      texlive.combined.scheme-full
+      texlive.combined.scheme-small
       thunderbird
       traceroute
       tree
