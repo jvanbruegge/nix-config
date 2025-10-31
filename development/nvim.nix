@@ -330,7 +330,6 @@
       { plugin = nvim-lspconfig;
         type = "lua";
         config = ''
-          local lspconfig = require('lspconfig')
           local trouble = require('trouble')
 
           local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -357,20 +356,21 @@
 
           local servers = { 'rust_analyzer', 'bashls', 'ts_ls' }
           for _, lsp in ipairs(servers) do
-            lspconfig[lsp].setup({
+            vim.lsp.enable(lsp)
+            vim.lsp.config(lsp, {
               on_attach = on_attach,
               capabilities = capabilities,
             })
           end
 
-          -- lspconfig.isabelle.setup({})
-
-          lspconfig.hls.setup({
+          vim.lsp.enable('hls')
+          vim.lsp.config('hls', {
             filetypes = { 'haskell', 'lhaskell', 'cabal' },
             capabilities = capabilities,
             on_attach = on_attach,
           })
-          lspconfig.nixd.setup({
+          vim.lsp.enable('nixd')
+          vim.lsp.config('nixd', {
             capabilities = capabilities,
             on_attach = on_attach,
             settings = {

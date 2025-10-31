@@ -31,7 +31,7 @@ in
 
   programs.zsh = {
     enable = true;
-    dotDir = ".config/zsh";
+    dotDir = "${config.xdg.configHome}/zsh";
     defaultKeymap = "viins";
     history = {
       path = "${config.xdg.dataHome}/zsh/zsh_history";

@@ -3,42 +3,45 @@
 {
   programs.git = {
     enable = true;
-    userName = "Jan van Brügge";
-    userEmail = "supermanitu@gmail.com";
 
-    aliases = {
-      c = "commit";
-      ca = "commit -a";
-      caa = "commit -a --amend";
+    settings = {
+      user = {
+        name = "Jan van Brügge";
+        email = "supermanitu@gmail.com";
+      };
 
-      ch = "checkout";
-      chb = "checkout -b";
-      chpr = "!sh -c 'git fetch origin pull/$1/head:pr/$1 && git checkout pr/$1' -";
+      alias = {
+        c = "commit";
+        ca = "commit -a";
+        caa = "commit -a --amend";
 
-      r = "rebase";
-      rc = "rebase --continue";
-      ri = "rebase -i";
+        ch = "checkout";
+        chb = "checkout -b";
+        chpr = "!sh -c 'git fetch origin pull/$1/head:pr/$1 && git checkout pr/$1' -";
 
-      a = "add";
-      b = "branch";
-      d = "diff --word-diff=color";
-      dc = "diff --cached --word-diff=color";
-      s = "status";
+        r = "rebase";
+        rc = "rebase --continue";
+        ri = "rebase -i";
 
-      st = "stash";
-      stp = "stash pop";
+        a = "add";
+        b = "branch";
+        d = "diff --word-diff=color";
+        dc = "diff --cached --word-diff=color";
+        s = "status";
 
-      p = "push";
-      pu = "pull";
+        st = "stash";
+        stp = "stash pop";
 
-      f = "fetch";
+        p = "push";
+        pu = "pull";
 
-      uu = "!git fetch upstream && git rebase upstream/$(git branch --quiet | grep '*' | cut -c 3-)";
+        f = "fetch";
 
-      l = "log --pretty=oneline --abbrev-commit --graph";
-    };
+        uu = "!git fetch upstream && git rebase upstream/$(git branch --quiet | grep '*' | cut -c 3-)";
 
-    extraConfig = {
+        l = "log --pretty=oneline --abbrev-commit --graph";
+      };
+
       merge.ff = false;
       pull.ff = "only";
       push = {

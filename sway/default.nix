@@ -10,7 +10,7 @@
     settings = {
       default_session = {
         command = ''
-          ${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd "dbus-run-session sway"
+          ${pkgs.tuigreet}/bin/tuigreet --time --cmd "dbus-run-session sway"
         '';
       };
     };
