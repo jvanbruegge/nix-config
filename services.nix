@@ -17,7 +17,16 @@
 
   xdg.portal = {
     enable = true;
-    config.common.default = [ "wlr" "gtk" ];
+    config.common = {
+      default = [ "gtk" ];
+      "org.freedesktop.impl.portal.Secret" = [ "gnome-keyring" ];
+      "org.freedesktop.impl.portal.Screenshot" = [ "wlr" ];
+      "org.freedesktop.impl.portal.ScreenCast" = [ "wlr" ];
+      # ignore inhibit bc gtk portal always returns as success,
+      # despite sway/the wlr portal not having an implementation,
+      # stopping firefox from using wayland idle-inhibit
+      "org.freedesktop.impl.portal.Inhibit" = [ "none" ];
+    };
     extraPortals = with pkgs; [
       xdg-desktop-portal-wlr
       xdg-desktop-portal-gtk
