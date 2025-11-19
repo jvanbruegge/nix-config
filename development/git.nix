@@ -1,6 +1,19 @@
 { config, pkgs, ... }:
 
 {
+  programs.delta = {
+    enable = true;
+    enableGitIntegration = true;
+    options = {
+      dark = true;
+      "line-numbers" = true;
+      navigate = true;
+      "syntax-theme" = "Monokai Extended Bright";
+      "hunk-header-style" = "raw";
+      "hunk-header-decoration-style" = "none";
+    };
+  };
+
   programs.git = {
     enable = true;
 
@@ -25,8 +38,8 @@
 
         a = "add";
         b = "branch";
-        d = "diff --word-diff=color";
-        dc = "diff --cached --word-diff=color";
+        d = "diff";
+        dc = "diff --cached";
         s = "status";
 
         st = "stash";
@@ -42,8 +55,11 @@
         l = "log --pretty=oneline --abbrev-commit --graph";
       };
 
-      merge.ff = false;
       pull.ff = "only";
+      merge = {
+        ff = false;
+        conflictStyle = "zdiff3";
+      };
       push = {
         autoSetupRemote = true;
         followTags = true;
@@ -57,7 +73,6 @@
         enabled = true;
         autoupdate = true;
       };
-      core.pager = "less -F -X";
       commit.gpgSign = true;
       tag = {
         gpgSign = true;
@@ -69,7 +84,7 @@
         renames = true;
         mnemonicPrefix = true;
       };
-      init.defaultBranch = "master";
+      init.defaultBranch = "main";
       branch.sort = "-committerdate";
       column.ui = "auto";
     };
