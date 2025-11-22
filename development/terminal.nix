@@ -25,8 +25,12 @@
         theme = "Monokai Classic";
         font-family = "Fira Code Nerd Font";
         font-feature = "ss05,ss03,ss02,cv24,ss09";
+        cursor-opacity = 0.5;
         keybind = [
-
+          "ctrl+shift+c=copy_to_clipboard"
+          "ctrl+shift+v=paste_from_clipboard"
+          "ctrl+equal=increase_font_size:1"
+          "ctrl+minus=decrease_font_size:1"
         ];
       };
     };
