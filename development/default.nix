@@ -4,7 +4,6 @@
     imports = [
       ./nvim.nix
       ./git.nix
-      ./terminal.nix
     ];
 
     home.packages = with pkgs; [

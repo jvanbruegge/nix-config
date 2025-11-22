@@ -1,5 +1,4 @@
 { pkgs, lib, ... }:
-
 {
   home.packages = with pkgs; [
     ripgrep
@@ -77,52 +76,14 @@
           })
         '';
       }
-      /*{ plugin = pkgs.vimUtils.buildVimPlugin rec {
-          pname = "profile.nvim";
-          version = "2025-03-05";
-          src = pkgs.fetchFromGitHub {
-            owner = "stevearc";
-            repo = pname;
-            rev = "30433d7513f0d14665c1cfcea501c90f8a63e003";
-            hash = "sha256-2Mk6VbC+K/WhTWF+yHyDhQKJhTi2rpo8VJsnO7ofHXs=";
-          };
-        };
+      { plugin = monokai-pro-nvim;
         type = "lua";
         config = ''
-          local should_profile = os.getenv("NVIM_PROFILE")
-          if should_profile then
-            require("profile").instrument_autocmds()
-            if should_profile:lower():match("^start") then
-              require("profile").start("*")
-            else
-              require("profile").instrument("*")
-            end
-          end
-
-          local function toggle_profile()
-            local prof = require("profile")
-            if prof.is_recording() then
-              prof.stop()
-              vim.ui.input({ prompt = "Save profile to:", completion = "file", default = "profile.json" }, function(filename)
-                if filename then
-                  prof.export(filename)
-                  vim.notify(string.format("Wrote %s", filename))
-                end
-              end)
-            else
-              prof.start("*")
-            end
-          end
-          vim.keymap.set("", "<f1>", toggle_profile)
-        '';
-      }*/
-      { plugin = tokyonight-nvim;
-        type = "lua";
-        config = ''
-          require('tokyonight').setup({
-            style = 'moon',
+          require('monokai-pro').setup({
+            filter = 'classic',
+            background_clear = { 'float_win' }
           })
-          vim.cmd.colorscheme('tokyonight')
+          vim.cmd.colorscheme('monokai-pro')
         '';
       }
       nvim-web-devicons
@@ -156,19 +117,6 @@
           end)
         '';
       }
-      /*{ plugin = image-nvim;
-        type = "lua";
-        config = ''
-          require("image").setup({
-            html = {
-              enabled = true,
-            },
-            css = {
-              enabled = true,
-            },
-          })
-        '';
-      }*/
       cmp-nvim-lsp
       cmp-buffer
       cmp-path
@@ -192,9 +140,13 @@
               end,
             },
             window = {
+              border = 'rounded',
               documentation = {
                 max_width = 100,
               },
+            },
+            completion = {
+              border = 'rounded'
             },
             formatting = {
               format = lspkind.cmp_format({
@@ -265,6 +217,9 @@
         type = "lua";
         config = ''
           require('lualine').setup({
+            options = {
+              theme = 'monokai-pro'
+            },
             sections = {
               lualine_x = { 'filetype', function()
                 local clients = vim.lsp.get_active_clients()
@@ -285,18 +240,6 @@
           vim.keymap.set('n', 'tr', whitespace.trim)
         '';
       }
-      /* { plugin = aw-watcher-nvim.overrideAttrs (_: {
-          patches = [ (pkgs.fetchpatch {
-            url = "https://github.com/lowitea/aw-watcher.nvim/pull/8.patch";
-            hash = "sha256-XBkSr2AAbSkJpE6tg2XVPAfGnNJ6dCdxRIMrBHaa1T8=";
-          }) ];
-      });
-        type = "lua";
-        config = ''
-          local watcher = require('aw_watcher')
-          watcher.setup({})
-        '';
-      } */
       { plugin = pkgs.vimUtils.buildVimPlugin rec {
           pname = "isabelle-syn.nvim";
           version = "2024-05-15";

@@ -8,12 +8,13 @@
     ./gpg.nix
     ./services.nix
 
+    ./development/terminal.nix
+
     ./users/jan.nix
   ];
 
   programs.zsh.enable = true;
   home-manager.users.jan = {
-    imports = [ ./zsh/zsh.nix ];
     home.stateVersion = "21.05";
   };
 
@@ -42,7 +43,6 @@
       };
       efi.canTouchEfiVariables = true;
     };
-    plymouth.enable = true;
     tmp.cleanOnBoot = false;
   };
 
@@ -57,14 +57,13 @@
     useUserPackages = true;
   };
 
+  networking.hostName = hostName;
+
   # Fonts & Keyboard layout
   fonts.packages = with pkgs; [
     dejavu_fonts
-    nerd-fonts.bitstream-vera-sans-mono
     ipafont
   ];
-
-  networking.hostName = hostName;
 
   services.xserver.xkb.extraLayouts = {
     us_de = {
@@ -81,5 +80,4 @@
   };
 
   system.stateVersion = "20.09";
-
 }

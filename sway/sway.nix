@@ -126,7 +126,7 @@ in
       window.border = 0;
       floating.border = 0;
 
-      terminal = lib.getExe config.programs.kitty.package;
+      terminal = "${lib.getExe config.programs.ghostty.package} +new-window";
       menu = "${pkgs.wofi}/bin/wofi --show drun | ${pkgs.findutils}/bin/xargs swaymsg exec --";
 
       input = {
