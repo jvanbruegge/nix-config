@@ -25,6 +25,7 @@
       eog
       evince
       file-roller
+      mercurial
       nautilus
       netbird
       adwaita-icon-theme
