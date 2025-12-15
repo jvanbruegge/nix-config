@@ -53,7 +53,7 @@
       nodePackages.browser-sync
       nodePackages.npm-check-updates
       nodePackages.prettier
-      openjdk17
+      openjdk21
       openssl
       pdftk
       picard
