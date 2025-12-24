@@ -18,6 +18,11 @@
     home.stateVersion = "21.05";
   };
 
+  programs.ausweisapp = {
+    enable = true;
+    openFirewall = true;
+  };
+
   services.printing.drivers = [ pkgs.hplip ];
 
   # Options for nix
