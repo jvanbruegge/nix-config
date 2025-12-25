@@ -14,7 +14,7 @@ in
 
   nix.settings.trusted-users = [ login ];
 
-  time.timeZone = "Europe/London";
+  time.timeZone = "Europe/Berlin";
 
   i18n.defaultLocale = "en_US.UTF-8";
 }
