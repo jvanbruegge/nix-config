@@ -33,7 +33,9 @@
       google-chrome
       hexyl
       hunspellDicts.de_DE
-      inkscape
+      (inkscape-with-extensions.override {
+        inkscapeExtensions = with inkscape-extensions; [ inkstitch ];
+      })
       inotify-tools
       (isabelle.withComponents (p: [(p.isabelle-linter.overrideAttrs (_: {
         src = pkgs.fetchFromGitHub {
