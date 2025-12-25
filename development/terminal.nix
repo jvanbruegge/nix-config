@@ -190,6 +190,7 @@
         VI_MODE_SET_CURSOR = "true";
         KEYTIMEOUT = "1";
         ZSH_AUTOSUGGEST_HISTORY_IGNORE = "cd *";
+        SSH_AUTH_SOCK = "/home/jan/.bitwarden-ssh-agent.sock";
       };
     };
 
