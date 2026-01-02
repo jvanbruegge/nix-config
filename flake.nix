@@ -23,6 +23,7 @@
     in {
       nixosConfigurations = {
         "Jan-Laptop" = mkMachine "Jan-Laptop" ./machines/laptop.nix;
+        "Jan-Work" = mkMachine "Jan-Work" ./machines/work-laptop.nix;
         "hwlap0036-macs" = mkMachine "hwlap0036-macs" ./machines/university-laptop.nix;
       };
     };
