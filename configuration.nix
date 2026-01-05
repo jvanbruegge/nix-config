@@ -37,7 +37,7 @@
       sshKey = "/root/.ssh/minecraft_ed25519";
     } ];
     settings = {
-      substituters = [
+      trusted-substituters = [
         "https://nixcache.reflex-frp.org"
         "http://nixcache.heilmannsoftware.net"
       ];
@@ -51,6 +51,7 @@
 
   # System boot
   boot = {
+    kernelPackages = pkgs.linuxPackages_6_18;
     loader = {
       systemd-boot = {
         enable = true;

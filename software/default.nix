@@ -1,7 +1,12 @@
-{ ... }:
+{ lib, hostName, ... }:
 {
   programs.adb.enable = true;
   programs.steam.enable = true;
+
+  services.couchdb = lib.mkIf (hostName == "Jan-Work") {
+    enable = true;
+    adminPass = "admin";
+  };
 
   home-manager.users.jan = { pkgs, lib, ... }: {
     imports = [
@@ -20,8 +25,8 @@
       ffmpeg
       freecad
       gedit
-      haskell.compiler.ghc912
-      haskell.packages.ghc912.haskell-language-server
+      #haskell.compiler.ghc912
+      #haskell.packages.ghc912.haskell-language-server
       gimp
       eog
       evince
@@ -38,16 +43,9 @@
         inkscapeExtensions = with inkscape-extensions; [ inkstitch ];
       })
       inotify-tools
-      (isabelle.withComponents (p: [(p.isabelle-linter.overrideAttrs (_: {
-        src = pkgs.fetchFromGitHub {
-          owner = "isabelle-prover";
-          repo = "isabelle-linter";
-          rev = "00bc92e60b3f2f09d1b44616b89dfc300c86f0b9";
-          hash = "sha256-SUHeEtZ2eeFrt8SfkC6FgOGugLudq644s2ZaMBywvIQ=";
-        };
-      }))]))
+      (isabelle.withComponents (p: [p.isabelle-linter]))
       jq
-      #jellyflix
+      jellyflix
       kubectl
       libreoffice
       mercurial
