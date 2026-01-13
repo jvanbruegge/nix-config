@@ -45,7 +45,7 @@ in
     };
     Service = {
       Type = "simple";
-      ExecStart = "${pkgs.batsignal}/bin/batsignal";
+      ExecStart = "${pkgs.batsignal}/bin/batsignal -n BAT1";
     };
   };
 

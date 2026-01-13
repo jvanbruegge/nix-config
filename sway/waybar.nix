@@ -51,7 +51,7 @@ in
           icon-size = 20;
         };
         battery = {
-          bat = "BAT0";
+          bat = "BAT1";
           format = "{capacity}% {icon}";
           format-icons = [ "" "" "" "" "" ];
         };
