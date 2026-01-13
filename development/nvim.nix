@@ -285,6 +285,13 @@
             vim.keymap.set('n', '<leader>h', vim.lsp.buf.hover, opts)
             vim.keymap.set('n', '<leader>q', vim.lsp.buf.code_action, opts)
 
+            vim.api.nvim_create_autocmd("BufWritePre", {
+              pattern = "*.hs",
+              callback = function()
+                vim.lsp.buf.format({ async = false })
+              end
+            })
+
             vim.keymap.set('n', '<leader>d', function()
               trouble.toggle('diagnostics')
             end, opts)
