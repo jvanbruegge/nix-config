@@ -1,12 +1,8 @@
 { config, pkgs, ... }:
 let
   monitors = {
-    laptop = "AU Optronics 0x1336 Unknown";
-    uniLaptop = "Chimei Innolux Corporation 0x152E Unknown";
-    home = {
-      left = "Samsung Electric Company U28E590 HTPK602401";
-      right = "Samsung Electric Company U28E590 HTPK602370";
-    };
+    laptop = "BOE NE160QDM-NZ6 Unknown";
+    home = "LG Electronics LG ULTRAGEAR 502NTBK2X269";
   };
 in
 {
@@ -18,22 +14,18 @@ in
         profile.name = "home";
         profile.outputs = [
           {
-            criteria = monitors.home.left;
-            mode = "3840x2160@60Hz";
+            criteria = monitors.home;
+            mode = "3440x1440@99.99Hz";
             position = "0,0";
-            scale = 1.5;
-            status = "enable";
-          }
-          {
-            criteria = monitors.home.right;
-            mode = "1920x1080@60Hz";
-            position = "2560,0";
             scale = 1.0;
             status = "enable";
           }
           {
-            criteria = "eDP-1";
-            status = "disable";
+            criteria = monitors.laptop;
+            mode = "2560x1600";
+            position = "3440,0";
+            scale = 1.0;
+            status = "enable";
           }
         ];
       }
@@ -41,14 +33,6 @@ in
         profile.name = "mobile";
         profile.outputs = [ {
           criteria = monitors.laptop;
-          scale = 1.5;
-          status = "enable";
-        } ];
-      }
-      {
-        profile.name = "uni";
-        profile.outputs =  [ {
-          criteria = monitors.uniLaptop;
           scale = 1.0;
           status = "enable";
         } ];
