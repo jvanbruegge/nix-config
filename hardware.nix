@@ -12,6 +12,8 @@
     pulse.enable = true;
   };
 
+  hardware.firmware = [ pkgs.linux-firmware ];
+
   # Wi-fi
   services.resolved.enable = true;
   networking.networkmanager = {
