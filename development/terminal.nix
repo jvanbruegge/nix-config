@@ -54,6 +54,7 @@
       enable = true;
       enableZshIntegration = true;
       settings = {
+        command_timeout = 2000;
         format = lib.concatStrings [
           "$os"
           "$directory"
