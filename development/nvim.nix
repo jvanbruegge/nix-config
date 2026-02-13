@@ -68,7 +68,7 @@
         ]);
         type = "lua";
         config = ''
-          require('nvim-treesitter.configs').setup({
+          require('nvim-treesitter.config').setup({
             auto_install = false;
             highlight = {
               enable = true,
@@ -299,7 +299,7 @@
               trouble.toggle('lsp_references')
             end, opts)
 
-            if client.server_capabilities.inlayHintProvider then
+            if client.server_capabilities.inlayHintProvider and vim.bo.filetype ~= 'cabal' then
               vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
             end
           end
@@ -318,6 +318,14 @@
             filetypes = { 'haskell', 'lhaskell', 'cabal' },
             capabilities = capabilities,
             on_attach = on_attach,
+            settings = {
+              haskell = {
+                manageHLS = "PATH",
+                sessionLoading = "multipleComponents",
+                formattingProvider = 'ormolu',
+                cabalFormattingProvider = 'cabal-fmt',
+              },
+            },
           })
           vim.lsp.enable('nixd')
           vim.lsp.config('nixd', {

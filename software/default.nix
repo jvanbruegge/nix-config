@@ -1,6 +1,5 @@
 { lib, hostName, ... }:
 {
-  programs.adb.enable = true;
   programs.steam.enable = true;
 
   services.couchdb = lib.mkIf (hostName == "Jan-Work") {
@@ -51,7 +50,6 @@
       mercurial
       mpv
       nixpkgs-review
-      nodePackages.browser-sync
       nodePackages.npm-check-updates
       nodePackages.prettier
       openjdk21
