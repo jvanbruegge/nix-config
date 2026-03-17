@@ -15,7 +15,6 @@
 
     home.packages = with pkgs; [
       audible-cli
-      bitwarden-desktop
       btop
       cabal-install
       discord
