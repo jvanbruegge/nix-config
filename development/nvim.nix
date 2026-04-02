@@ -3,9 +3,9 @@
   home.packages = with pkgs; [
     ripgrep
     bat
-    nodePackages.typescript
-    nodePackages.typescript-language-server
-    nodePackages.bash-language-server
+    typescript
+    typescript-language-server
+    bash-language-server
     nixd
     ormolu
     gcc

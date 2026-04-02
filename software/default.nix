@@ -49,8 +49,8 @@
       mercurial
       mpv
       nixpkgs-review
-      nodePackages.npm-check-updates
-      nodePackages.prettier
+      npm-check-updates
+      prettier
       openjdk21
       openssl
       pdftk
