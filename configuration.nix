@@ -81,10 +81,14 @@
   networking.hostName = hostName;
 
   # Fonts & Keyboard layout
-  fonts.packages = with pkgs; [
-    dejavu_fonts
-    ipafont
-  ];
+  fonts = {
+    packages = with pkgs; [
+      dejavu_fonts
+      liberation_ttf
+      ipafont
+    ];
+    fontDir.enable = true;
+  };
 
   services.xserver.xkb.extraLayouts = {
     us_de = {
