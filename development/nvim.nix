@@ -18,7 +18,10 @@
     extraLuaPackages = ps: [ ps.magick ];
     extraPackages = with pkgs; [ imagemagick ];
 
-    extraLuaConfig = ''
+    withRuby = false;
+    withPython3 = true;
+
+    initLua = ''
       local k = vim.keycode
       vim.g.mapleader = k('<space>')
 

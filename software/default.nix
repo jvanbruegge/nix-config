@@ -10,7 +10,7 @@
   home-manager.users.jan = { pkgs, lib, ... }: {
     imports = [
       ./firefox.nix
-      ./activitywatch.nix
+      #./activitywatch.nix
     ];
 
     home.packages = with pkgs; [

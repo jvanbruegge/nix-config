@@ -16,14 +16,13 @@
   programs.zsh.enable = true;
   home-manager.users.jan = {
     home.stateVersion = "21.05";
+    home.enableNixpkgsReleaseCheck = false;
   };
 
   programs.ausweisapp = {
     enable = true;
     openFirewall = true;
   };
-
-  services.printing.drivers = [ pkgs.hplip ];
 
   # Options for nix
   nix = {

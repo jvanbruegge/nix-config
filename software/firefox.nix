@@ -18,6 +18,7 @@
         tridactyl-native
       ];
     };
+    configPath = "${config.xdg.configHome}/mozilla/firefox";
     profiles.jan = {
       settings = {
         "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
