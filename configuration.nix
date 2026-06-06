@@ -45,11 +45,11 @@
         "nixcache.heilmannsoftware.net:5kPz/A5gVCs8E96y8PlT10sdAJtAQ5n4n3E0j7UXGQA="
       ];
     };
-    gc = {
+    /*gc = {
       automatic = true;
       dates     = "Tue,Fri";
       options   = "--delete-older-than 14d";
-    };
+    };*/
   };
   nixpkgs.config.allowUnfree = true;
 
