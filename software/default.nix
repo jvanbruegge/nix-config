@@ -26,6 +26,7 @@
       #haskell.compiler.ghc912
       #haskell.packages.ghc912.haskell-language-server
       gimp
+      git-filter-repo
       eog
       evince
       file-roller
