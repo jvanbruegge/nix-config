@@ -244,6 +244,17 @@
         '';
       }
       { plugin = pkgs.vimUtils.buildVimPlugin rec {
+          pname = "vim-css-color";
+          version = "2024-10-18";
+          src = pkgs.fetchFromGitHub {
+            owner = "ap";
+            repo = pname;
+            rev = "14fd934cdd9ca1ac0e53511094e612eb9bace373";
+            hash = "sha256-mkarxd+Xz9UpgrcYBjQlXqZbDQ95/Xikft9ftNPaXTU=";
+          };
+        };
+      }
+      { plugin = pkgs.vimUtils.buildVimPlugin rec {
           pname = "isabelle-syn.nvim";
           version = "2024-05-15";
           src = pkgs.fetchFromGitHub {
