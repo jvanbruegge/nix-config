@@ -24,6 +24,8 @@
     openFirewall = true;
   };
 
+  services.teamviewer.enable = true;
+
   # Options for nix
   nix = {
     nixPath = [ "nixpkgs=${pkgs.path}" ];
