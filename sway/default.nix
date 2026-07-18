@@ -9,9 +9,7 @@
     enable = true;
     settings = {
       default_session = {
-        command = ''
-          ${pkgs.tuigreet}/bin/tuigreet --time --cmd "dbus-run-session sway"
-        '';
+        command = "${pkgs.tuigreet}/bin/tuigreet --time --cmd 'dbus-run-session sway'";
       };
     };
   };
