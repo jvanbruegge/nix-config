@@ -52,7 +52,7 @@
       nixpkgs-review
       npm-check-updates
       prettier
-      openjdk21
+      openjdk25
       openssl
       pdftk
       picard
