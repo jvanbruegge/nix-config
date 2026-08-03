@@ -32,6 +32,11 @@
           "ctrl+equal=increase_font_size:1"
           "ctrl+minus=decrease_font_size:1"
         ];
+        shell-integration = "zsh";
+        shell-integration-features = [
+          "ssh-env"
+          "ssh-terminfo"
+        ];
       };
     };
 
