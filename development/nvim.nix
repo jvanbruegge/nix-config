@@ -55,8 +55,10 @@
       -- Splits
       vim.o.splitright = true
       vim.keymap.set('n', '<C-3>', vim.cmd.vsplit)
-      vim.keymap.set('n', 'A', '<C-W>h')
-      vim.keymap.set('n', 'D', '<C-W>l')
+      vim.keymap.set('n', '<C-H>', '<C-W>h')
+      vim.keymap.set('n', '<C-J>', '<C-W>j')
+      vim.keymap.set('n', '<C-K>', '<C-W>k')
+      vim.keymap.set('n', '<C-L>', '<C-W>l')
 
       -- Show file in window title
       vim.opt.title = true
@@ -198,7 +200,7 @@
           gitsigns.setup({
             on_attach = function(bufnr)
               local opts = { buffer = bufnr }
-              vim.keymap.set('n', '<leader>b', gitsigns.toggle_current_line_blame, opts)
+              vim.keymap.set('n', '<leader>b', gitsigns.blame, opts)
             end
           })
         '';
