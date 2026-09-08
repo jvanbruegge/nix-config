@@ -65,7 +65,7 @@ set -u
 echo "$decrypt"
 
 # shellcheck disable=2086
-copyright=$(ffprobe $decrypt "$dir"/*.aax* 2>&1 | grep copyright | sed 's/^.*: //')
+copyright=$(ffprobe $decrypt "$dir"/*.aax* 2>&1 | grep copyright | sed 's/^.*: //' || echo "")
 
 # Write book metadata
 echo ";FFMETADATA1
