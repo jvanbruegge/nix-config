@@ -3,8 +3,6 @@
   home.packages = with pkgs; [
     ripgrep
     bat
-    typescript
-    typescript-language-server
     bash-language-server
     nixd
     ormolu

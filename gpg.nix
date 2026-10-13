@@ -3,7 +3,7 @@
 {
   services.udev.packages = with pkgs; [ yubikey-personalization ];
   services.pcscd.enable = true;
-  services.dbus.packages = [ pkgs.gcr ];
+  services.dbus.packages = [ pkgs.gcr_4 ];
 
   home-manager.users.jan = { pkgs, lib, ... }: {
     home.activation = {
