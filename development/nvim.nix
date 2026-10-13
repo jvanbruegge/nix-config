@@ -4,6 +4,7 @@
     ripgrep
     bat
     bash-language-server
+    typescript_7
     nixd
     ormolu
     gcc
@@ -323,7 +324,7 @@
             end
           end
 
-          local servers = { 'rust_analyzer', 'bashls', 'ts_ls' }
+          local servers = { 'rust_analyzer', 'bashls', 'tsc' }
           for _, lsp in ipairs(servers) do
             vim.lsp.enable(lsp)
             vim.lsp.config(lsp, {
