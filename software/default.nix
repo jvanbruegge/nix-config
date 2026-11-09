@@ -1,9 +1,16 @@
-{ lib, hostName, ... }:
+{ lib, hostName, pkgs, ... }:
 {
   programs.steam.enable = true;
 
   services.couchdb = lib.mkIf (hostName == "Jan-Work") {
     enable = true;
+    package = pkgs.couchdb3.overrideAttrs (finalAttrs: {
+      version = "3.5.3";
+      src = pkgs.fetchurl {
+        url = "mirror://apache/couchdb/source/${finalAttrs.version}/apache-${finalAttrs.pname}-${finalAttrs.version}.tar.gz";
+        hash = "sha256-5WEQKqrf3aHkmebp4S0kc0MykbYIvNOQvLz1kLu2z2g=";
+      };
+    });
     adminPass = "admin";
   };
 
@@ -61,7 +68,6 @@
       qrencode
       shellcheck
       signal-desktop
-      squeekboard
       speechd
       tealdeer
       texlive.combined.scheme-small
